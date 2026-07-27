@@ -1,0 +1,10 @@
+title: ro-maji IME Rescue
+description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐ツール
+lang: ja
+
+# GitHub Pages が標準でサポートするテーマ。別のものにする場合は
+# https://pages.github.com/themes/ の一覧から選ぶ。
+theme: jekyll-theme-minimal
+
+# リポジトリ直下ではなく docs/ を公開ディレクトリにする場合、
+# GitHub のリポジトリ設定 → Pages → Source で「main / docs」を選ぶ。
