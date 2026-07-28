@@ -1,10 +1,18 @@
 title: ro-maji IME Rescue
+tagline: ローマ字を日本語に変換するアプリ
 description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐ツール
 lang: ja
 
-# GitHub Pages が標準でサポートするテーマ。別のものにする場合は
-# https://pages.github.com/themes/ の一覧から選ぶ。
-theme: jekyll-theme-minimal
+# テーマは使わず _layouts/default.html と assets/css/style.css で組む。
+# 既定テーマに依存しないぶん、配色やレイアウトを完全に制御できる。
+
+# 全ページに default レイアウトを適用する。各ファイルの front matter に
+# layout を書かずに済むため、生成物（troubleshooting / privacy）も変更不要。
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
 
 # README はリポジトリの説明用。サイトのページとしては出力しない。
 exclude:
