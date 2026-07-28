@@ -1,71 +1,65 @@
-# docs/ — GitHub Pages 用
+# docs/ — サイトの内容
 
-Store のサポートサイトとして公開する。トラブルシューティングの置き場を用意することが主目的で、審査でプライバシーポリシーの URL を求められた場合の受け皿も兼ねる。
+公開サイトの内容をここで管理する。公開は別リポジトリ（`../ro-maji-ime-rescue`）から GitHub Pages で行う。本体のソースを非公開に保つため分けている。
 
 ## ファイル
 
 | ファイル | 内容 | 生成元 |
 |---|---|---|
-| `_config.yml` | Jekyll の設定。テーマとサイト名 | — |
-| `index.md` | トップページ。アプリ紹介・サポート連絡先 | — |
-| `troubleshooting.md` | 症状別の切り分け | `TROUBLESHOOTING.md` |
-| `privacy.md` | プライバシーポリシー | `PRIVACY_POLICY.md` |
+| `index.md` | トップページ。アプリ紹介・サポート連絡先 | 直接編集する |
+| `troubleshooting.md` | 症状別の切り分け | `TROUBLESHOOTING.md` から自動生成 |
+| `privacy.md` | プライバシーポリシー | `PRIVACY_POLICY.md` から自動生成 |
+| `_config.yml` | Jekyll の設定 | 直接編集する |
+| `README.md` | この手順書 | サイトへはコピーされない |
 
-**`troubleshooting.md` と `privacy.md` はリポジトリ直下のファイルと同じ本文。片方を直したらもう片方も直すこと。**
+## 内容を修正する手順
 
-生成し直す場合（Git Bash）:
+**直接編集してよいのは `index.md` と `_config.yml` だけ。** `troubleshooting.md` と `privacy.md` は生成物なので、直接編集しても次回の同期で上書きされる。
 
-```bash
-{ printf -- '---\ntitle: トラブルシューティング\n---\n\n'; cat TROUBLESHOOTING.md; printf -- '\n---\n\n[トップページへ戻る](./)\n'; } > docs/troubleshooting.md
-```
+### 1. 編集する
 
-生成後、`TROUBLESHOOTING.md` 冒頭の `APP_SPEC.md` へのリンクはサイト上に存在しないため書き換えること。
+| 修正したい内容 | 編集するファイル |
+|---|---|
+| トラブルシューティング | リポジトリ直下の `TROUBLESHOOTING.md` |
+| プライバシーポリシー | リポジトリ直下の `PRIVACY_POLICY.md` |
+| トップページ | `docs/index.md` |
+| サイトのタイトル・テーマ | `docs/_config.yml` |
 
-## 公開方法
+### 2. 同期する
 
-無料の GitHub Pages はリポジトリの公開が前提。方法が2つある。
-
-### A. このリポジトリで公開する
-
-ソースコードも公開される。キーボードフックを使うアプリなので、内容を確認できることは利用者にとって安心材料になる。
-
-1. GitHub にリポジトリを作成して push
-2. Settings → Pages
-3. Source: `Deploy from a branch`
-4. Branch: `main`、フォルダー: `/docs` → Save
-
-### B. ドキュメント専用のリポジトリを作る
-
-ソースを非公開のままにできる。`docs/` の**中身**を新しいリポジトリの**直下**へ置く。
+リポジトリ直下で実行する（Git Bash）。
 
 ```bash
-# 例: 隣に作業用フォルダーを作ってコピーする
-mkdir ../romaji-ime-rescue-site
-cp docs/_config.yml docs/index.md docs/troubleshooting.md docs/privacy.md ../romaji-ime-rescue-site/
-cd ../romaji-ime-rescue-site
-git init
-git add -A
-git commit -m "サイトを追加"
+./sync-site.sh
 ```
 
-GitHub で空のリポジトリを作成し、表示される手順に従って push する。その後:
+生成し直したうえで公開用リポジトリへコピーし、差分を表示する。push はしない。
 
-1. Settings → Pages
-2. Source: `Deploy from a branch`
-3. Branch: `main`、フォルダー: `/ (root)` → Save
+### 3. 反映する
 
-この方法では本体リポジトリと二重管理になる。更新時は `docs/` を直してからコピーし直す。
+差分を確認してから、表示されたコマンドを実行する。
 
-## 公開後の URL
+```bash
+cd ../ro-maji-ime-rescue && git add -A && git commit -m "内容を更新" && git push
+```
+
+push から1〜2分でサイトに反映される。
+
+## 公開設定
+
+公開用リポジトリの Settings → Pages
+
+- Source: `Deploy from a branch`
+- Branch: `main`、フォルダー: `/ (root)`
+
+## URL
 
 | ページ | URL |
 |---|---|
-| トップ | `https://<ユーザー名>.github.io/<リポジトリ名>/` |
+| トップ | `https://<ユーザー名>.github.io/ro-maji_IME_Rescue/` |
 | トラブルシューティング | `.../troubleshooting.html` |
 | プライバシーポリシー | `.../privacy.html` |
 
-トップページの URL を Partner Center の「Web サイト」欄に指定する。
+## 残っている作業
 
-## 公開後にやること
-
-`index.md` の「入手」節が「準備中」のままなので、Store 公開後にストアページの URL へ差し替える。
+`index.md` の「入手」節が「準備中」のまま。Store 公開後にストアページの URL へ差し替える。

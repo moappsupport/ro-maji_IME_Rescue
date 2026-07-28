@@ -6,5 +6,6 @@ lang: ja
 # https://pages.github.com/themes/ の一覧から選ぶ。
 theme: jekyll-theme-minimal
 
-# リポジトリ直下ではなく docs/ を公開ディレクトリにする場合、
-# GitHub のリポジトリ設定 → Pages → Source で「main / docs」を選ぶ。
+# README はリポジトリの説明用。サイトのページとしては出力しない。
+exclude:
+  - README.md
