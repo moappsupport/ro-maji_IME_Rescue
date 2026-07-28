@@ -90,7 +90,7 @@ ro-maji IME Rescue（以下「本アプリ」）のプライバシーポリシ�
 
 本アプリまたは本ポリシーに関するお問い合わせは、以下までご連絡ください。
 
-- 開発者連絡先: mozotfsent@gmail.com
+- 開発者連絡先: moappsupport@gmail.com
 
 ---
 

@@ -54,7 +54,7 @@ Microsoft Store で配布しています。
 
 不具合の報告やご質問は以下までご連絡ください。
 
-- mozotfsent@gmail.com
+- moappsupport@gmail.com
 
 ## プライバシー
 
