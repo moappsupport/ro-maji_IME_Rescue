@@ -77,8 +77,7 @@ Microsoft Store で配布しています（有料）。
 
 ご購入の前に、上記の**動作環境**と下記の**制限事項**を必ずご確認ください。特に、変換キーのない英語配列（US / ANSI）のキーボードでは動作しません。
 
-<!-- 公開後に Store のリンクへ差し替える -->
-準備中
+[Microsoft Store で入手](https://apps.microsoft.com/detail/9ND04SG0293F)
 
 ## 制限事項
 
