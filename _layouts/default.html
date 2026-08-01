@@ -4,16 +4,59 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.url == "/" %}{{ site.title }} — {{ site.tagline }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
-<meta name="description" content="{{ site.description }}">
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
 
 <link rel="icon" href="{{ '/assets/img/icon.png' | relative_url }}" type="image/png">
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{ site.title }} — {{ site.tagline }}">
-<meta property="og:description" content="{{ site.description }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:title" content="{% if page.url == '/' %}{{ site.title }} — {{ site.tagline }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
 <meta property="og:image" content="{{ '/assets/img/icon.png' | absolute_url }}">
 <meta name="twitter:card" content="summary">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{{ site.title }}",
+      "item": "{{ '/' | absolute_url }}"
+    }{% if page.url != "/" %},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ page.title }}",
+      "item": "{{ page.url | absolute_url }}"
+    }{% endif %}
+  ]
+}
+</script>
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ site.title }}",
+  "description": "{{ site.description }}",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Windows 10, Windows 11",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://apps.microsoft.com/detail/9ND04SG0293F",
+    "price": "350",
+    "priceCurrency": "JPY"
+  }
+}
+</script>
+{% endif %}
 </head>
 <body>
 

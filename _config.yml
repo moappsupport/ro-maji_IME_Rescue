@@ -3,6 +3,11 @@ tagline: ローマ字を日本語に変換するアプリ
 description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐ツール
 lang: ja
 
+# canonical・OGP・sitemap の absolute_url が完全な URL を組み立てるために必要。
+# 未設定だと absolute_url は baseurl を付けるだけで、ホスト名が付かない。
+url: "https://moappsupport.github.io"
+baseurl: "/ro-maji_IME_Rescue"
+
 # テーマは使わず _layouts/default.html と assets/css/style.css で組む。
 # 既定テーマに依存しないぶん、配色やレイアウトを完全に制御できる。
 
