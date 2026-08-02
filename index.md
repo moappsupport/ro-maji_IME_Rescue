@@ -60,7 +60,7 @@ title: ro-maji IME Rescue
 | OS | Windows 10 バージョン 2004（ビルド 19041）以降 / Windows 11 |
 | アーキテクチャ | 64ビット（x64） |
 | キーボード | **変換キーがあること**（日本語配列 / JIS） |
-| IME | 日本語 IME（Microsoft IME など） |
+| IME | 日本語 IME（Microsoft IME / Google 日本語入力で動作確認済み） |
 
 .NET のインストールは不要です。必要なものはすべてアプリに含まれています。管理者権限も必要ありません。
 
