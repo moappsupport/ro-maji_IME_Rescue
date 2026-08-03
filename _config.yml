@@ -8,6 +8,16 @@ lang: ja
 url: "https://moappsupport.github.io"
 baseurl: "/ro-maji_IME_Rescue"
 
+# レイアウトと各ページから参照する定数。同じ値を複数箇所に書かないための置き場。
+# publisher は msix/AppxManifest.xml の PublisherDisplayName と一致させる
+# （構造化データの発行元と Store のリスティングを結び付けるため）。
+store_url: "https://apps.microsoft.com/detail/9ND04SG0293F"
+app_version: "1.0.3"
+publisher: "moapp"
+email: "moappsupport@gmail.com"
+og_image: "/assets/img/og.png"
+theme_color: "#0014bb"
+
 # テーマは使わず _layouts/default.html と assets/css/style.css で組む。
 # 既定テーマに依存しないぶん、配色やレイアウトを完全に制御できる。
 

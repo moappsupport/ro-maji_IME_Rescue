@@ -4,4 +4,28 @@ layout: null
 User-agent: *
 Allow: /
 
+# AI 検索のクローラを明示的に許可する。既定でも全許可だが、意図を曖昧に
+# しないために書いておく。これはこのサイトのクロール許可であって、アプリが
+# ネットワーク通信を行わないことと矛盾しない。
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: {{ '/sitemap.xml' | absolute_url }}

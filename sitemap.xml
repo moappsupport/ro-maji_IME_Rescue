@@ -3,7 +3,13 @@ layout: null
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% comment %}
+  changefreq と priority は出さない（Google が無視すると明言しているため）。
+  lastmod は front matter の updated を使う。生成ページ（troubleshooting /
+  privacy）には sync-site.sh が元 Markdown の最終コミット日を書き込む。
+{% endcomment %}
 {% for p in site.html_pages %}  <url>
-    <loc>{{ p.url | absolute_url }}</loc>
+    <loc>{{ p.url | absolute_url }}</loc>{% if p.updated %}
+    <lastmod>{{ p.updated }}</lastmod>{% endif %}
   </url>
 {% endfor %}</urlset>

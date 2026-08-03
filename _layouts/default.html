@@ -1,11 +1,20 @@
 <!doctype html>
-<html lang="ja">
+<html lang="{{ site.lang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.url == "/" %}{{ site.title }} — {{ site.tagline }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
-<meta name="description" content="{{ page.description | default: site.description }}">
+{%- assign page_title = page.title | append: " | " | append: site.title -%}
+{%- if page.url == "/" -%}
+  {%- assign page_title = site.title | append: " — " | append: site.tagline -%}
+{%- endif -%}
+{%- assign page_desc = page.description | default: site.description -%}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- 本文とスクリーンショットを検索結果や AI の要約で長めに使わせる -->
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="theme-color" content="{{ site.theme_color }}">
 
 <link rel="icon" href="{{ '/assets/img/icon.png' | relative_url }}" type="image/png">
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
@@ -14,49 +23,113 @@
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
-<meta property="og:title" content="{% if page.url == '/' %}{{ site.title }} — {{ site.tagline }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}">
-<meta property="og:description" content="{{ page.description | default: site.description }}">
-<meta property="og:image" content="{{ '/assets/img/icon.png' | absolute_url }}">
-<meta name="twitter:card" content="summary">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:image" content="{{ site.og_image | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.title }} — {{ site.tagline }}">
+<meta name="twitter:card" content="summary_large_image">
 
+<!-- 検索エンジンの所有権確認タグ。手順は SITE_WORKFLOW.md を参照。 -->
+<meta name="google-site-verification" content="97Vbu1LRMlQuO-eh4g9ctvpDkcuN-L6VTJG9QOVBsYs">
+<!--
+<meta name="msvalidate.01" content="">
+-->
+
+<!-- 構造化データ。@id で相互参照させ、エンティティの関係を一意にする。
+     文字列は jsonify を通す（引用符や改行で JSON が壊れるのを防ぐため）。 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "{{ site.title }}",
-      "item": "{{ '/' | absolute_url }}"
-    }{% if page.url != "/" %},
+      "@type": "Organization",
+      "@id": "{{ '/' | absolute_url }}#publisher",
+      "name": {{ site.publisher | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "email": {{ site.email | jsonify }},
+      "logo": {{ '/assets/img/icon.png' | absolute_url | jsonify }}
+    },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "{{ page.title }}",
-      "item": "{{ page.url | absolute_url }}"
-    }{% endif %}
+      "@type": "WebSite",
+      "@id": "{{ '/' | absolute_url }}#website",
+      "name": {{ site.title | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "inLanguage": {{ site.lang | jsonify }},
+      "publisher": { "@id": "{{ '/' | absolute_url }}#publisher" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ page.url | absolute_url }}#webpage",
+      "url": {{ page.url | absolute_url | jsonify }},
+      "name": {{ page_title | jsonify }},
+      "description": {{ page_desc | jsonify }},
+      "inLanguage": {{ site.lang | jsonify }},
+      "isPartOf": { "@id": "{{ '/' | absolute_url }}#website" },
+      "about": { "@id": "{{ '/' | absolute_url }}#app" }{% if page.updated %},
+      "dateModified": {{ page.updated | jsonify }}{% endif %}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ page.url | absolute_url }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": {{ site.title | jsonify }},
+          "item": {{ '/' | absolute_url | jsonify }}
+        }{% if page.url != "/" %},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.title | jsonify }},
+          "item": {{ page.url | absolute_url | jsonify }}
+        }{% endif %}
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "{{ '/' | absolute_url }}#app",
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "日本語入力支援",
+      "operatingSystem": "Windows 10, Windows 11",
+      "processorRequirements": "x64",
+      "softwareVersion": {{ site.app_version | jsonify }},
+      "softwareRequirements": "日本語配列（106/109 キー）の変換キーが必要です。英語配列（US / ANSI）のキーボードでは動作しません。.NET のインストールと管理者権限は不要です。",
+      "featureList": [
+        "変換キーを 1 回押すだけで、直前のローマ字を日本語に入力し直す",
+        "IME がオンのときは変換キーが通常どおり動作する",
+        "処理に失敗した場合は文字を消さずに中断するため、元の文章が壊れない",
+        "ネットワーク通信を一切行わず、広告も含まない",
+        "大文字が 2 文字以上続く英単語は、そのままの表記で残す",
+        "7 日間の無料体験版がある"
+      ],
+      "image": {{ site.og_image | absolute_url | jsonify }},
+      "screenshot": [
+        {{ '/assets/img/before.png' | absolute_url | jsonify }},
+        {{ '/assets/img/after.png' | absolute_url | jsonify }}
+      ],
+      "inLanguage": {{ site.lang | jsonify }},
+      "installUrl": {{ site.store_url | jsonify }},
+      "softwareHelp": {{ '/troubleshooting.html' | absolute_url | jsonify }},
+      "publisher": { "@id": "{{ '/' | absolute_url }}#publisher" },
+      "isAccessibleForFree": false,
+      "offers": {
+        "@type": "Offer",
+        "url": {{ site.store_url | jsonify }},
+        "price": "350",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "seller": { "@type": "Organization", "name": "Microsoft Store" }
+      }
+    }
   ]
 }
 </script>
-{% if page.url == "/" %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "{{ site.title }}",
-  "description": "{{ site.description }}",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Windows 10, Windows 11",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://apps.microsoft.com/detail/9ND04SG0293F",
-    "price": "350",
-    "priceCurrency": "JPY"
-  }
-}
-</script>
-{% endif %}
 </head>
 <body>
 
@@ -64,12 +137,12 @@
   <div class="wrap header-inner">
     <a class="brand" href="{{ '/' | relative_url }}">
       <img src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="32" height="32">
-      <span class="brand-name">ro-maji IME Rescue</span>
+      <span class="brand-name">{{ site.title }}</span>
     </a>
     <nav class="site-nav">
-      <a href="{{ '/' | relative_url }}">トップ</a>
-      <a href="{{ '/troubleshooting.html' | relative_url }}">困ったとき</a>
-      <a href="{{ '/privacy.html' | relative_url }}">プライバシー</a>
+      <a href="{{ '/troubleshooting.html' | relative_url }}">トラブルシューティング</a>
+      <a href="{{ '/privacy.html' | relative_url }}">プライバシーポリシー</a>
+      <a href="mailto:{{ site.email }}">お問い合わせ</a>
     </nav>
   </div>
 </header>
@@ -85,19 +158,6 @@
 {{ content }}
 </div>
 </main>
-
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <p class="footer-brand">ro-maji IME Rescue</p>
-    <p class="footer-note">{{ site.tagline }}</p>
-    <nav class="footer-nav">
-      <a href="{{ '/' | relative_url }}">トップ</a>
-      <a href="{{ '/troubleshooting.html' | relative_url }}">困ったとき</a>
-      <a href="{{ '/privacy.html' | relative_url }}">プライバシーポリシー</a>
-      <a href="mailto:moappsupport@gmail.com">お問い合わせ</a>
-    </nav>
-  </div>
-</footer>
 
 </body>
 </html>
