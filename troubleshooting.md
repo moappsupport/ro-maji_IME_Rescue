@@ -161,8 +161,8 @@ kyouhaHTMLwobenkyou     → きょうはHTMLをべんきょう
 小文字の英単語を残したい場合は、**半角スペースで区切る。** 空白は対象に含まれない（`\x20` は `\x21-\x7E` の範囲外）ため、そこで切れる。
 
 ```
-testnokakikata      → test ごと変換されてしまう
-test nokakikata     → nokakikata だけが変換される
+apiwotukau           → api ごと変換されてしまう
+api wotukau          → wotukau だけが変換される
 ```
 
 変換後にスペースを削除すれば意図した結果になる。
