@@ -43,11 +43,11 @@ updated: 2026-08-04
 
 <div class="shots">
   <figure class="shot">
-    <img src="assets/img/before.png" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="98" loading="lazy">
+    <img src="assets/img/before.png" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="370" loading="lazy">
     <figcaption>変換キーを押す前</figcaption>
   </figure>
   <figure class="shot">
-    <img src="assets/img/after.png" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1654" height="95" loading="lazy">
+    <img src="assets/img/after.png" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
     <figcaption>変換キーを押した後</figcaption>
   </figure>
 </div>
