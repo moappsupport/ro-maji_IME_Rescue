@@ -66,11 +66,11 @@ updated: 2026-08-04
 
 <div class="settings">
   <figure class="shot">
-    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作設定・クリップボード・スタートアップの各項目" width="501" height="661" loading="lazy">
+    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作の速さ（プリセット）・クリップボード・スタートアップの各項目" width="501" height="661" loading="lazy">
   </figure>
   <ul class="settings-list">
     <li><b>取得範囲</b><span>カーソル位置からどこまで文字を遡って読み取るかを選べます。行頭まで／直前2行まで／文書先頭まで。</span></li>
-    <li><b>動作設定</b><span>各動作の待機時間を 7 項目まで調整できます。動作が追いつかないアプリでは、まず操作間待機を増やしてください。</span></li>
+    <li><b>動作の速さ</b><span>「安定重視／標準／高速」から選べます。動作が追いつかないアプリでは「安定重視」にしてください。詳細設定を開けば、待機時間を7項目まで個別に調整することもできます。</span></li>
     <li><b>クリップボード</b><span>処理中に一時的に上書きされる内容の扱いを選べます。そのまま保持／元の内容を復元／空にする。</span></li>
     <li><b>スタートアップ</b><span>Windows 起動時の自動起動に対応しています。既定はオフです。</span></li>
   </ul>
