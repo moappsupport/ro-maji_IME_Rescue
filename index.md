@@ -66,7 +66,7 @@ updated: 2026-08-05
 
 <div class="settings">
   <figure class="shot">
-    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作の速さ（プリセット）・クリップボード・スタートアップの各項目" width="501" height="661" loading="lazy">
+    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作の速さ（プリセットと詳細設定）・クリップボード・スタートアップの各項目" width="516" height="822" loading="lazy">
   </figure>
   <ul class="settings-list">
     <li><b>取得範囲</b><span>カーソル位置からどこまで文字を遡って読み取るかを選べます。行頭まで／直前2行まで／文書先頭まで。</span></li>
@@ -124,8 +124,8 @@ kyounotenkihaharedeatatakaidesu
 ```
 APIwotukau            → APIを使う
 kyouhaHTMLwobenkyou   → 今日はHTMLを勉強
-desuI                 → ですI
-Cdoraibu              → Cどらいぶ
+Bandeikimasu          → B案で行きます
+Ashanoteian           → A社の提案
 ```
 
 </div>
