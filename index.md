@@ -66,7 +66,7 @@ updated: 2026-08-05
 
 <div class="settings">
   <figure class="shot">
-    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作の速さ（プリセットと詳細設定）・クリップボード・スタートアップの各項目" width="516" height="822" loading="lazy">
+    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作の速さ（プリセットと詳細設定）・クリップボード・スタートアップの各項目" width="514" height="822" loading="lazy">
   </figure>
   <ul class="settings-list">
     <li><b>取得範囲</b><span>カーソル位置からどこまで文字を遡って読み取るかを選べます。行頭まで／直前2行まで／文書先頭まで。</span></li>
@@ -181,6 +181,22 @@ PDFwoexportshimasu  → PDFを得x歩rtします
 ```
 
 残したい英単語は**大文字で入力する**か、間に半角スペースを入れてから変換してください。
+
+</div>
+<div class="limit-item" markdown="1">
+
+### ChatGPT のチャット欄では複数行を扱えません
+
+**ChatGPT（chatgpt.com）のチャット欄で複数行を入力した状態で行全体を変換すると、意図せずメッセージが送信されることがあります。** 送信は取り消せません。変換結果に文字が重複・欠落することもあります。
+
+```
+APIwoshiyousuruHTMLnopeejiwosakuseishimasu
+→ APIを使用するHTMLのペエジを作成しますA   ← 末尾に余分な A
+```
+
+同欄がアプリから送るキー入力を正しく処理しないためで、**本アプリ側では回避できません**。メモ帳・Gemini・Claude のチャット欄では発生しません。
+
+1 行だけを入力欄に置いて変換するか、別の場所で変換してから貼り付けてください。
 
 </div>
 <div class="limit-item" markdown="1">
