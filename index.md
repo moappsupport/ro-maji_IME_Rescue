@@ -1,8 +1,8 @@
 ---
 title: ro-maji IME Rescue
-description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ。消して打ち直す必要はありません。7日間の無料体験版があります。
+description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ。消して打ち直す必要はありません。15日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
-updated: 2026-08-05
+updated: 2026-08-06
 ---
 
 <div class="hero">
@@ -18,7 +18,7 @@ updated: 2026-08-05
 
   <div class="cta">
     <a class="btn-primary" href="{{ site.store_url }}">Microsoft Store で入手</a>
-    <p class="cta-note">7日間の無料体験版があります。ご購入の前に<a href="#env">動作環境</a>と<a href="#limits">できないこと</a>をご確認ください。</p>
+    <p class="cta-note">15日間の無料体験版があります。ご購入の前に<a href="#env">動作環境</a>と<a href="#limits">できないこと</a>をご確認ください。</p>
   </div>
 
   <div class="demo">
@@ -221,7 +221,7 @@ APIwoshiyousuruHTMLnopeejiwosakuseishimasu
   </details>
   <details>
     <summary>無料で試せますか</summary>
-    <p>7日間の無料体験版があります。Microsoft Store から入手できます。</p>
+    <p>15日間の無料体験版があります。Microsoft Store から入手できます。</p>
   </details>
   <details>
     <summary>インターネット接続や .NET は必要ですか</summary>
@@ -260,7 +260,7 @@ APIwoshiyousuruHTMLnopeejiwosakuseishimasu
       "name": "無料で試せますか",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "7日間の無料体験版があります。Microsoft Store から入手できます。"
+        "text": "15日間の無料体験版があります。Microsoft Store から入手できます。"
       }
     },
     {
