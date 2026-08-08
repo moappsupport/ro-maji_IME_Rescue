@@ -146,12 +146,20 @@ img { max-width: 100%; height: auto; }
   color: var(--accent-text);
 }
 
-/* 幅の上限は掛けない。折り返しは自然に任せる（IME 対応の一文が続くため、
-   広い画面では1行、狭い画面では2行になる）。 */
+/* 幅の上限は掛けない。1文で言い切る導入文なので、折り返さず1行で見せる。 */
 .hero-lead {
   margin: 0;
   color: var(--fg-muted);
   font-size: 1.02rem;
+}
+
+/* IME 対応の注記。本文（hero-lead）と同じ文にせず下に分けたのは、
+   対応 IME の列挙が本題の妨げにならないようにするため。hero-foot と
+   同じ扱い（小さく・控えめな色）にする。 */
+.hero-lead-note {
+  margin: .4rem 0 0;
+  font-size: .88rem;
+  color: var(--fg-muted);
 }
 
 .hero-foot {
@@ -197,20 +205,23 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========== hero 内: デモと特長を横に並べる ==========
-   デモはテキストが短く、1fr で幅を取ると右側が余って間延びする。デモ側は
-   内容に応じた幅（上限 26rem）に留める。
+   デモ側は上限 33rem。「変換キー」行の説明文がこの幅からちょうど1行に収まる
+   （32rem で2行→1行に切り替わることを実測済み。1rem の余裕を持たせてある）。
 
-   特長側は 1fr にせず 20rem の固定幅にしてある。この幅だと2枚のカード文が
-   どちらも2行で折り返し、実測でデモとほぼ同じ高さ（272px と 262px、差10px）
-   になる。stretch で高さを合わせない（無理に引き伸ばすと空白が偏って下手に
-   見えるため）。カード文を変更すると折り返し行数が変わって高さがずれるので、
-   その際はこの幅も見直すこと。 */
+   特長側は 1fr にせず 25rem の固定幅にしてある。2枚のカード文がどちらも
+   2行で折り返し、実測でデモとほぼ同じ高さになる（256px と 262px、差6px）。
+   2行に切り替わる境目は実測で20rem付近だったが、フォントの実装差で
+   ブラウザによっては3行になることがあったため、境目ぎりぎりを避けて
+   余裕を持たせてある。stretch で高さを合わせない（無理に引き伸ばすと
+   空白が偏って下手に見えるため）。カード文や「変換キー」行の文言を
+   変更すると折り返し行数が変わって高さがずれるので、その際はこの2つの
+   幅を実測から見直すこと。 */
 .hero-showcase {
   display: grid;
-  grid-template-columns: minmax(0, 26rem) 20rem;
+  grid-template-columns: minmax(0, 33rem) 25rem;
   gap: 1.25rem;
   align-items: start;
-  max-width: 48rem;
+  max-width: 60rem;
   margin: 2rem auto 0;
   text-align: left;
 }
@@ -611,8 +622,11 @@ kbd {
   line-height: 1.3;
 }
 
-/* デモと特長の2列は、48rem より手前で窮屈になるため先に縦積みへ切り替える。 */
-@media (max-width: 56rem) {
+/* デモと特長の2列は、合計で約59rem（デモ33rem + gap + 特長25rem）必要。
+   .wrap の左右余白（3rem）も足すと62rem強で、それより手前だと2列が
+   窮屈に潰れる（デモが33rem未満に縮み、変換キー行の説明文が2行に戻る）。
+   余裕を持たせて64remで縦積みへ切り替える。 */
+@media (max-width: 64rem) {
   .hero-showcase { grid-template-columns: 1fr; }
 }
 

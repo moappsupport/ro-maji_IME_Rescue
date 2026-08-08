@@ -14,7 +14,8 @@ updated: 2026-08-08
     </div>
   </div>
 
-  <p class="hero-lead">IME をオフにしたまま打ってしまったローマ字を<strong>変換キーひとつ</strong>で日本語に入力し直します、消して打ち直す必要はありません。（Microsoft IME / Google 日本語入力で動作確認済み）</p>
+  <p class="hero-lead">IME をオフにしたまま打ってしまったローマ字を<strong>変換キーひとつ</strong>で日本語に入力し直します、消して打ち直す必要はありません。</p>
+  <p class="hero-lead-note">（Microsoft IME / Google 日本語入力で動作確認済み）</p>
 
   <div class="cta">
     <a class="btn-primary" href="{{ site.store_url }}">Microsoft Store で入手</a>
