@@ -146,7 +146,8 @@ img { max-width: 100%; height: auto; }
   color: var(--accent-text);
 }
 
-/* 幅の上限は掛けない。1 文で言い切る導入文なので、折り返さず 1 行で見せる。 */
+/* 幅の上限は掛けない。折り返しは自然に任せる（IME 対応の一文が続くため、
+   広い画面では1行、狭い画面では2行になる）。 */
 .hero-lead {
   margin: 0;
   color: var(--fg-muted);
@@ -194,6 +195,27 @@ img { max-width: 100%; height: auto; }
   font-size: .86rem;
   color: var(--fg-muted);
 }
+
+/* ========== hero 内: デモと特長を横に並べる ==========
+   デモはテキストが短く、1fr で幅を取ると右側が余って間延びする。デモ側は
+   内容に応じた幅（上限 26rem）に留める。
+
+   特長側は 1fr にせず 20rem の固定幅にしてある。この幅だと2枚のカード文が
+   どちらも2行で折り返し、実測でデモとほぼ同じ高さ（272px と 262px、差10px）
+   になる。stretch で高さを合わせない（無理に引き伸ばすと空白が偏って下手に
+   見えるため）。カード文を変更すると折り返し行数が変わって高さがずれるので、
+   その際はこの幅も見直すこと。 */
+.hero-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 26rem) 20rem;
+  gap: 1.25rem;
+  align-items: start;
+  max-width: 48rem;
+  margin: 2rem auto 0;
+  text-align: left;
+}
+.hero-showcase .demo { margin: 0; max-width: none; }
+.hero-showcase .cards { grid-template-columns: 1fr; margin: 0; }
 
 /* ========== 変換デモ ========== */
 .demo {
@@ -587,6 +609,11 @@ kbd {
   margin: 0;
   font-size: clamp(1.6rem, 4.5vw, 2.2rem);
   line-height: 1.3;
+}
+
+/* デモと特長の2列は、48rem より手前で窮屈になるため先に縦積みへ切り替える。 */
+@media (max-width: 56rem) {
+  .hero-showcase { grid-template-columns: 1fr; }
 }
 
 /* PC 専用だが、ウィンドウを狭めても横並びが潰れないよう段階的に列を減らす。 */

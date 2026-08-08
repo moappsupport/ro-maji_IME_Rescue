@@ -2,7 +2,7 @@
 title: ro-maji IME Rescue
 description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ。消して打ち直す必要はありません。15日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
-updated: 2026-08-06
+updated: 2026-08-08
 ---
 
 <div class="hero">
@@ -14,26 +14,32 @@ updated: 2026-08-06
     </div>
   </div>
 
-  <p class="hero-lead">IME をオフにしたまま打ってしまったローマ字を<strong>変換キーひとつ</strong>で日本語に入力し直します、消して打ち直す必要はありません。</p>
+  <p class="hero-lead">IME をオフにしたまま打ってしまったローマ字を<strong>変換キーひとつ</strong>で日本語に入力し直します、消して打ち直す必要はありません。（Microsoft IME / Google 日本語入力で動作確認済み）</p>
 
   <div class="cta">
     <a class="btn-primary" href="{{ site.store_url }}">Microsoft Store で入手</a>
     <p class="cta-note">15日間の無料体験版があります。ご購入の前に<a href="#env">動作環境</a>と<a href="#limits">できないこと</a>をご確認ください。</p>
   </div>
 
-  <div class="demo">
-    <div class="demo-row is-before">
-      <span class="demo-label">IME オフのまま打ってしまった</span>
-      <p class="demo-text">kyouhaHTMLtoAPIwobenkyousita</p>
+  <div class="hero-showcase">
+    <div class="demo">
+      <div class="demo-row is-before">
+        <span class="demo-label">IME オフのまま打ってしまった</span>
+        <p class="demo-text">kyouhaHTMLtoAPIwobenkyousita</p>
+      </div>
+      <div class="demo-key">
+        <kbd>変換</kbd>
+        <span>カーソルを文字列の直後に置いて押すだけ。範囲を選択する必要はありません。</span>
+      </div>
+      <div class="demo-row is-after">
+        <span class="demo-label">日本語に入力し直される</span>
+        <p class="demo-text">今日はHTMLとAPIを勉強した</p>
+      </div>
     </div>
-    <div class="demo-key">
-      <kbd>変換</kbd>
-      <span>カーソルを文字列の直後に置いて押すだけ。範囲を選択する必要はありません。</span>
-    </div>
-    <div class="demo-row is-after">
-      <span class="demo-label">日本語に入力し直される</span>
-      <p class="demo-text">今日はHTMLとAPIを勉強した</p>
-    </div>
+    <ul class="cards">
+      <li><b>変換キーひとつで完結</b><span>覚えるショートカットはありません。打ち間違えたら、そのまま押すだけです。</span></li>
+      <li><b>邪魔をしません</b><span>IME がオンのときは変換キーが通常どおり動作するので、普段の日本語入力の邪魔をしません。</span></li>
+    </ul>
   </div>
 
   <p class="hero-foot">起動するとタスクトレイに常駐します。文字の読み取りにコピー操作を使うため、処理中はクリップボードを一時的に上書きします。</p>
@@ -50,52 +56,6 @@ updated: 2026-08-06
     <img src="assets/img/after.png" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
     <figcaption>変換キーを押した後</figcaption>
   </figure>
-</div>
-
-## 特長 {#features}
-
-<ul class="cards">
-  <li><b>変換キーひとつで完結</b><span>覚えるショートカットはありません。打ち間違えたら、そのまま押すだけです。</span></li>
-  <li><b>邪魔をしません</b><span>IME がオンのときは、変換キーは通常どおり動作します。</span></li>
-  <li><b>文章を壊しません</b><span>処理に失敗した場合は文字を消さずに中断します。元の文章はそのまま残ります。</span></li>
-</ul>
-
-## 設定 {#settings}
-
-タスクトレイのアイコンをダブルクリックすると設定画面が開きます。
-
-<div class="settings">
-  <figure class="shot">
-    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作の速さ（プリセットと詳細設定）・クリップボード・スタートアップの各項目" width="514" height="822" loading="lazy">
-  </figure>
-  <ul class="settings-list">
-    <li><b>取得範囲</b><span>カーソル位置からどこまで文字を遡って読み取るかを選べます。行頭まで／直前2行まで／文書先頭まで。</span></li>
-    <li><b>動作の速さ</b><span>「安定重視／標準／最速」から選べます。動作が追いつかないアプリでは「安定重視」にしてください。詳細設定を開けば、待機時間を7項目まで個別に調整することもできます。</span></li>
-    <li><b>クリップボード</b><span>処理中に一時的に上書きされる内容の扱いを選べます。そのまま保持／元の内容を復元／空にする。</span></li>
-    <li><b>スタートアップ</b><span>Windows 起動時の自動起動に対応しています。既定はオフです。</span></li>
-  </ul>
-</div>
-
-## 動作環境 {#env}
-
-<div class="env" markdown="1">
-
-| 項目 | 要件 |
-|---|---|
-| OS | Windows 10 バージョン 2004（ビルド 19041）以降 / Windows 11 |
-| アーキテクチャ | 64ビット（x64） |
-| キーボード | **変換キーがあること**（日本語配列 / JIS） |
-| IME | 日本語 IME（Microsoft IME / Google 日本語入力で動作確認済み） |
-
-<p class="env-note">.NET のインストールは不要です。ネットワーク通信を行わず、管理者権限も必要ありません。</p>
-
-<div class="env-warn">
-  <p class="note-title">変換キーのないキーボードでは動作しません</p>
-  <p>変換キーは日本語配列（106/109 キー）にあるキーで、<strong>英語配列（US / ANSI）には存在しません。</strong>本アプリ側に、他のキーへ割り当てを変更する機能はありません。</p>
-  <p>ただし AutoHotkey などのツールで任意のキーから変換キーを送っている場合は動作します。変換キーがどのキーから送られたかは区別しないためです。</p>
-  <p>日本語配列でも、Windows のキーボードレイアウト設定が英語配列になっていると認識されないことがあります。</p>
-</div>
-
 </div>
 
 ## できること {#can}
@@ -129,13 +89,22 @@ Ashanoteian           → A社の提案
 ```
 
 </div>
-<div class="limit-item" markdown="1">
-
-### 失敗しても、文章は壊れません
-
-読み取りや選択に失敗した場合は、文字を消さずに処理を中断します。元の文章はそのまま残ります。IME がオンのときは変換キーが通常どおり動作するため、普段の日本語入力の邪魔をしません。
-
 </div>
+
+## 設定 {#settings}
+
+タスクトレイのアイコンをダブルクリックすると設定画面が開きます。
+
+<div class="settings">
+  <figure class="shot">
+    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。取得範囲・動作の速さ（プリセットと詳細設定）・クリップボード・スタートアップの各項目" width="514" height="822" loading="lazy">
+  </figure>
+  <ul class="settings-list">
+    <li><b>取得範囲</b><span>カーソル位置からどこまで文字を遡って読み取るかを選べます。行頭まで／直前2行まで／文書先頭まで。</span></li>
+    <li><b>動作の速さ</b><span>「安定重視／標準／最速」から選べます。動作が追いつかないアプリでは「安定重視」にしてください。詳細設定を開けば、待機時間を7項目まで個別に調整することもできます。</span></li>
+    <li><b>クリップボード</b><span>処理中に一時的に上書きされる内容の扱いを選べます。そのまま保持／元の内容を復元／空にする。</span></li>
+    <li><b>スタートアップ</b><span>Windows 起動時の自動起動に対応しています。既定はオフです。</span></li>
+  </ul>
 </div>
 
 ## できないこと・制限事項 {#limits}
@@ -185,22 +154,6 @@ PDFwoexportshimasu  → PDFを得x歩rtします
 </div>
 <div class="limit-item" markdown="1">
 
-### ChatGPT のチャット欄では複数行を扱えません
-
-**ChatGPT（chatgpt.com）のチャット欄で複数行を入力した状態で行全体を変換すると、意図せずメッセージが送信されることがあります。** 送信は取り消せません。変換結果に文字が重複・欠落することもあります。
-
-```
-APIwoshiyousuruHTMLnopeejiwosakuseishimasu
-→ APIを使用するHTMLのペエジを作成しますA   ← 末尾に余分な A
-```
-
-同欄がアプリから送るキー入力を正しく処理しないためで、**本アプリ側では回避できません**。メモ帳・Gemini・Claude のチャット欄では発生しません。
-
-1 行だけを入力欄に置いて変換するか、別の場所で変換してから貼り付けてください。
-
-</div>
-<div class="limit-item" markdown="1">
-
 ### その他
 
 - すべてのアプリで動作するわけではありません。対象アプリのコピー操作、選択操作、IME 制御の挙動に依存します。
@@ -210,6 +163,27 @@ APIwoshiyousuruHTMLnopeejiwosakuseishimasu
 症状ごとの切り分け手順は[トラブルシューティング](troubleshooting.html)にまとめています。
 
 </div>
+</div>
+
+## 動作環境 {#env}
+
+<div class="env" markdown="1">
+
+| 項目 | 要件 |
+|---|---|
+| OS | Windows 10 バージョン 2004（ビルド 19041）以降 / Windows 11 |
+| アーキテクチャ | 64ビット（x64） |
+| キーボード | **変換キーがあること**（日本語配列 / JIS） |
+
+<p class="env-note">.NET のインストールは不要です。ネットワーク通信を行わず、管理者権限も必要ありません。</p>
+
+<div class="env-warn">
+  <p class="note-title">変換キーのないキーボードでは動作しません</p>
+  <p>変換キーは日本語配列（106/109 キー）にあるキーで、<strong>英語配列（US / ANSI）には存在しません。</strong>本アプリ側に、他のキーへ割り当てを変更する機能はありません。</p>
+  <p>ただし AutoHotkey などのツールで任意のキーから変換キーを送っている場合は動作します。変換キーがどのキーから送られたかは区別しないためです。</p>
+  <p>日本語配列でも、Windows のキーボードレイアウト設定が英語配列になっていると認識されないことがあります。</p>
+</div>
+
 </div>
 
 ## よくある質問 {#faq}
