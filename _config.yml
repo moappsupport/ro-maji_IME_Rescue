@@ -12,7 +12,7 @@ baseurl: "/ro-maji_IME_Rescue"
 # publisher は msix/AppxManifest.xml の PublisherDisplayName と一致させる
 # （構造化データの発行元と Store のリスティングを結び付けるため）。
 store_url: "https://apps.microsoft.com/detail/9ND04SG0293F"
-app_version: "1.1.0"
+app_version: "1.2.0"
 publisher: "moapp"
 email: "moappsupport@gmail.com"
 og_image: "/assets/img/og.png"

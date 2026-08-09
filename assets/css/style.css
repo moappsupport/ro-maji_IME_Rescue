@@ -522,6 +522,79 @@ kbd {
 }
 .limit-item pre { background: var(--bg); }
 
+/* ========== できること + 変更履歴（2列） ========== */
+/* 変更履歴を独立した節にすると、版が増えるたびにページが縦に伸びる。できることと
+   横幅を分け合わせ、行の高さは背の高いほう（できること）で決める。stretch で
+   変更履歴の枠がそこまで伸び、溢れたぶんは枠の内側でスクロールするため、
+   版がいくつ増えてもページ全体の縦幅は変わらない。 */
+.can-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.can-col { min-width: 0; }
+.can-row .limits { margin-bottom: 0; }
+
+/* 見出しをできること側と同じ高さに揃える。h2 の既定マージンだけだと
+   グリッドの行頭で微妙にずれる。 */
+.can-row h2 { margin-top: 1.6rem; }
+
+.changelog {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.changelog h2 { margin-bottom: 0; }
+
+/* 枠だけを担当する。中身は .changelog-scroll に絶対配置で入れ、この要素の
+   高さに寄与させない。そうしないと版が増えたときに変更履歴のほうが背が高くなり、
+   グリッドの行の高さをこちらが決めてしまって、狙いと逆にページが縦に伸びる。 */
+.changelog-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin-top: 1.25rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-2);
+  border-radius: 10px;
+  background: var(--bg-soft);
+  overflow: hidden;   /* 角丸から中身がはみ出さないように */
+}
+.changelog-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 1.1rem 1.3rem;
+  /* 下端をぼかして、続きがあることを見せる。スクロール位置に追従させず
+     常に出しておく（版は増え続ける前提なので、初期状態から溢れていてよい）。 */
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent 100%);
+}
+.changelog-scroll > :first-child { margin-top: 0; }
+.changelog-scroll > :last-child { margin-bottom: 1.5rem; }
+.changelog-scroll h3 {
+  margin: 1.4rem 0 .4rem;
+  font-size: .98rem;
+}
+.changelog-scroll h3:first-of-type { margin-top: 0; }
+.changelog-scroll ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+/* 各項目は「見出しの一文 + 説明」の2段。説明は色を落として、
+   一覧としてタイトルだけを拾い読みできるようにする。 */
+.changelog-scroll li {
+  margin: .8rem 0;
+  font-size: .92rem;
+  line-height: 1.65;
+}
+.changelog-scroll li p { margin: 0; }
+.changelog-scroll li p + p {
+  margin-top: .2rem;
+  color: var(--text-muted);
+  font-size: .87rem;
+}
+
 /* ========== 注意ボックス ========== */
 .note {
   margin: 1.5rem 0;
@@ -636,6 +709,16 @@ kbd {
   .cards { grid-template-columns: 1fr; }
   .settings { grid-template-columns: 1fr; }
   .settings .shot { width: 100%; }
+  /* 1列に落ちると高さを揃える相手がいなくなる。ここで内側のスクロールを
+     残すと、ページのスクロールと入れ子になって操作しづらいので全部出す。 */
+  .can-row { grid-template-columns: 1fr; }
+  .changelog-body { overflow: visible; }
+  .changelog-scroll {
+    position: static;
+    overflow-y: visible;
+    mask-image: none;
+  }
+  .changelog-scroll > :last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 34rem) {

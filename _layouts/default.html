@@ -99,14 +99,14 @@
       "operatingSystem": "Windows 10, Windows 11",
       "processorRequirements": "x64",
       "softwareVersion": {{ site.app_version | jsonify }},
-      "softwareRequirements": "日本語配列（106/109 キー）の変換キーが必要です。英語配列（US / ANSI）のキーボードでは動作しません。.NET のインストールと管理者権限は不要です。",
+      "softwareRequirements": "起動用のキーとして変換キー（日本語配列 106/109 キー）または右Ctrl キーが必要です。英語配列（US / ANSI）のキーボードでは右Ctrl キーを使用します。.NET のインストールと管理者権限は不要です。",
       "featureList": [
-        "変換キーを 1 回押すだけで、直前のローマ字を日本語に入力し直す",
-        "IME がオンのときは変換キーが通常どおり動作する",
+        "変換キーまたは右Ctrl キーを 1 回押すだけで、直前のローマ字を日本語に入力し直す",
+        "IME がオンのときは、そのキー本来の動作をそのまま行う",
         "処理に失敗した場合は文字を消さずに中断するため、元の文章が壊れない",
         "ネットワーク通信を一切行わず、広告も含まない",
-        "大文字が 2 文字以上続く英単語は、そのままの表記で残す",
-        "7 日間の無料体験版がある"
+        "大文字の英単語は、1 文字でもそのままの表記で残す",
+        "15 日間の無料体験版がある"
       ],
       "image": {{ site.og_image | absolute_url | jsonify }},
       "screenshot": [
@@ -116,6 +116,7 @@
       "inLanguage": {{ site.lang | jsonify }},
       "installUrl": {{ site.store_url | jsonify }},
       "softwareHelp": {{ '/troubleshooting.html' | absolute_url | jsonify }},
+      "releaseNotes": "v1.2.0: 起動用のキーに右Ctrl キーを選べるようになり、英語配列のキーボードでも使えます。クリップボードの復元が画像やファイルにも対応し、設定画面に「適用」ボタンを追加しました。",
       "publisher": { "@id": "{{ '/' | absolute_url }}#publisher" },
       "isAccessibleForFree": false,
       "offers": {
