@@ -426,11 +426,13 @@ kbd {
   margin: 0;
   padding: 1.1rem 1.25rem;
   border: 1px solid var(--border);
-  border-top: 3px solid var(--accent);
+  border-top: 3px solid var(--accent-2);
   border-radius: 12px;
   background: var(--bg-soft);
   line-height: 1.7;
 }
+/* アイコンの二色を交互に置く。枚数が増えても緑青緑…と続く */
+.cards li:nth-of-type(even) { border-top-color: var(--accent); }
 .cards b { display: block; margin-bottom: .2rem; }
 .cards span { font-size: .9rem; color: var(--fg-muted); }
 
@@ -514,6 +516,9 @@ kbd {
   background: var(--bg-soft);
   padding: 1.1rem 1.3rem;
 }
+/* .cards と同じく交互に。「できること」と「できないこと」は別々の .limits に
+   入っているので、それぞれ緑始まりになる。 */
+.limit-item:nth-of-type(even) { border-left-color: var(--accent); }
 .limit-item > :first-child { margin-top: 0; }
 .limit-item > :last-child { margin-bottom: 0; }
 .limit-item h3 {
