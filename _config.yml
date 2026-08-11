@@ -18,11 +18,6 @@ email: "moappsupport@gmail.com"
 og_image: "/assets/img/og.png"
 theme_color: "#0014bb"
 
-# GitHub Pages既定のGFMパーサーは見出しの IAL（{: #id}）を解釈しない既知の問題があり、
-# troubleshooting.md の症状見出しの id が壊れていた。素の kramdown パーサーに切り替える。
-kramdown:
-  input: Kramdown
-
 # テーマは使わず _layouts/default.html と assets/css/style.css で組む。
 # 既定テーマに依存しないぶん、配色やレイアウトを完全に制御できる。
 
