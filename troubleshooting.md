@@ -352,7 +352,7 @@ result: Success
 
 ---
 
-[トップページへ戻る](./)
+[トップページへ戻る]({{ '/' | relative_url }})
 
 <script type="application/ld+json">
 {

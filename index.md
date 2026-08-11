@@ -7,7 +7,7 @@ updated: 2026-08-11
 
 <div class="hero">
   <div class="hero-head">
-    <img class="hero-icon" src="assets/img/icon.png" alt="ro-maji IME Rescue のアイコン" width="88" height="88">
+    <img class="hero-icon" src="{{ '/assets/img/icon.png' | relative_url }}" alt="ro-maji IME Rescue のアイコン" width="88" height="88">
     <div class="hero-titles">
       <h1>ro-maji IME Rescue</h1>
       <p class="hero-tagline">ローマ字を日本語に変換するアプリ</p>
@@ -19,7 +19,7 @@ updated: 2026-08-11
 
   <div class="cta">
     <a class="btn-primary" href="{{ site.store_url }}">Microsoft Store で入手</a>
-    <p class="cta-note">15日間の無料体験版があります。ご購入の前に<a href="#env">動作環境</a>と<a href="#limits">できないこと</a>をご確認ください。</p>
+    <p class="cta-note">15日間の無料体験版があります。ご購入の前に<a href="{{ '/#env' | relative_url }}">動作環境</a>と<a href="{{ '/#limits' | relative_url }}">できないこと</a>をご確認ください。</p>
   </div>
 
   <div class="hero-showcase">
@@ -50,11 +50,11 @@ updated: 2026-08-11
 
 <div class="shots">
   <figure class="shot">
-    <img src="assets/img/before.png" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="370" loading="lazy">
+    <img src="{{ '/assets/img/before.png' | relative_url }}" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="370" loading="lazy">
     <figcaption>変換キーを押す前</figcaption>
   </figure>
   <figure class="shot">
-    <img src="assets/img/after.png" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
+    <img src="{{ '/assets/img/after.png' | relative_url }}" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
     <figcaption>変換キーを押した後（右Ctrl キーに変更しても同じです）</figcaption>
   </figure>
 </div>
@@ -76,7 +76,7 @@ kyounotenkihaharedeatatakaidesu
 → 今日の天気は晴れで温かいです
 ```
 
-画面端での折り返しは影響しません。折り返して数行に見えていても、Enter を押していなければ 1 行として扱います。ただし<a href="#long-text">一度に変換する文字数が多いと、IME 側で先頭から確定されていきます</a>。
+画面端での折り返しは影響しません。折り返して数行に見えていても、Enter を押していなければ 1 行として扱います。ただし<a href="{{ '/troubleshooting.html#long-text' | relative_url }}">一度に変換する文字数が多いと、IME 側で先頭から確定されていきます</a>。
 
 </div>
 <div class="limit-item" markdown="1">
@@ -157,7 +157,7 @@ Bandeikimasu         → B案で行きます
 
 <div class="settings">
   <figure class="shot">
-    <img src="assets/img/settings.png" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="537" height="1059" loading="lazy">
+    <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="537" height="1059" loading="lazy">
   </figure>
   <ul class="settings-list">
     <li><b>トリガーキー</b><span>変換キー（既定）か右Ctrl キーを選びます。英語配列（US / ANSI）のキーボードには変換キーが無いため、右Ctrl キーをお使いください。どちらも IME がオンのときは何も起きません。</span></li>
@@ -253,7 +253,7 @@ PDFwoexportshimasu  → PDFを得x歩rtします
 - パスワード欄など、内容を知られたくない入力欄では使用しないでください。
 - 対象のアプリが管理者権限で動作している場合、Windows の仕組み（UIPI）により操作できません。
 
-症状ごとの切り分け手順は[トラブルシューティング](troubleshooting.html)にまとめています。
+症状ごとの切り分け手順は[トラブルシューティング]({{ '/troubleshooting.html' | relative_url }})にまとめています。
 
 </div>
 </div>

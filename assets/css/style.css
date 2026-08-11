@@ -596,7 +596,7 @@ kbd {
 .changelog-scroll li p { margin: 0; }
 .changelog-scroll li p + p {
   margin-top: .2rem;
-  color: var(--text-muted);
+  color: var(--fg-muted);
   font-size: .87rem;
 }
 
