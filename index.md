@@ -54,7 +54,7 @@ updated: 2026-08-20
   </figure>
   <figure class="shot">
     <img src="{{ '/assets/img/after.png' | relative_url }}" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
-    <figcaption>変換キーを押した後（右Ctrl キーに変更しても同じです）</figcaption>
+    <figcaption>変換キーを押した後</figcaption>
   </figure>
 </div>
 
