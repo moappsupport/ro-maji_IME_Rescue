@@ -43,7 +43,7 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
                "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.7;
   /* 日本語の約物が詰まりすぎないようにする */
   font-feature-settings: "palt" 0;
 }
@@ -112,7 +112,7 @@ img { max-width: 100%; height: auto; }
 /* ========== ヒーロー ========== */
 .hero {
   text-align: center;
-  padding: 3.25rem 0 2.5rem;
+  padding: 2.25rem 0 1.75rem;
 }
 
 /* アイコンとタイトルを横に置く。縦積みより高さが半分で済む。 */
@@ -121,7 +121,7 @@ img { max-width: 100%; height: auto; }
   align-items: center;
   justify-content: center;
   gap: 1.1rem;
-  margin-bottom: 1.1rem;
+  margin-bottom: .8rem;
   text-align: left;
 }
 
@@ -153,17 +153,8 @@ img { max-width: 100%; height: auto; }
   font-size: 1.02rem;
 }
 
-/* IME 対応の注記。本文（hero-lead）と同じ文にせず下に分けたのは、
-   対応 IME の列挙が本題の妨げにならないようにするため。hero-foot と
-   同じ扱い（小さく・控えめな色）にする。 */
-.hero-lead-note {
-  margin: .4rem 0 0;
-  font-size: .88rem;
-  color: var(--fg-muted);
-}
-
 .hero-foot {
-  margin: 1rem auto 0;
+  margin: .8rem auto 0;
   font-size: .88rem;
   color: var(--fg-muted);
 }
@@ -174,7 +165,7 @@ img { max-width: 100%; height: auto; }
   flex-direction: column;
   align-items: center;
   gap: .5rem;
-  margin-top: 1.5rem;
+  margin-top: 1.1rem;
 }
 
 .btn-primary {
@@ -209,20 +200,18 @@ img { max-width: 100%; height: auto; }
    （32rem で2行→1行に切り替わることを実測済み。1rem の余裕を持たせてある）。
 
    特長側は 1fr にせず 25rem の固定幅にしてある。2枚のカード文がどちらも
-   2行で折り返し、実測でデモとほぼ同じ高さになる（256px と 262px、差6px）。
-   2行に切り替わる境目は実測で20rem付近だったが、フォントの実装差で
-   ブラウザによっては3行になることがあったため、境目ぎりぎりを避けて
-   余裕を持たせてある。stretch で高さを合わせない（無理に引き伸ばすと
-   空白が偏って下手に見えるため）。カード文や「変換キー」行の文言を
-   変更すると折り返し行数が変わって高さがずれるので、その際はこの2つの
-   幅を実測から見直すこと。 */
+   2行で折り返す幅で、2行に切り替わる境目は実測で20rem付近だったが、
+   フォントの実装差でブラウザによっては3行になることがあったため、境目
+   ぎりぎりを避けて余裕を持たせてある。stretch で高さを合わせない（無理に
+   引き伸ばすと空白が偏って下手に見えるため）。デモ側のほうが背が高く、
+   右下に余白が出るのは想定どおり。埋めるためだけにカードを増やさない。 */
 .hero-showcase {
   display: grid;
   grid-template-columns: minmax(0, 33rem) 25rem;
   gap: 1.25rem;
   align-items: start;
   max-width: 60rem;
-  margin: 2rem auto 0;
+  margin: 1.4rem auto 0;
   text-align: left;
 }
 .hero-showcase .demo { margin: 0; max-width: none; }
@@ -230,17 +219,16 @@ img { max-width: 100%; height: auto; }
 
 /* ========== 変換デモ ========== */
 .demo {
-  margin: 2rem auto 0;
+  margin: 1.4rem auto 0;
   max-width: 46rem;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   background: var(--bg-soft);
   overflow: hidden;
   text-align: left;
-  box-shadow: var(--shadow);
 }
 
-.demo-row { padding: 1.35rem 1.5rem; }
+.demo-row { padding: 1rem 1.25rem; }
 .demo-row + .demo-row { border-top: 1px solid var(--border); }
 
 .demo-label {
@@ -273,7 +261,7 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   gap: .7rem;
-  padding: .6rem 1.5rem;
+  padding: .5rem 1.25rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--bg);
@@ -300,21 +288,20 @@ kbd {
 .shots {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1.25rem 0;
+  gap: .8rem;
+  margin: .9rem 0;
 }
 
 .shot {
   margin: 0;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 8px;
   background: #fff;
   overflow: hidden;
-  box-shadow: var(--shadow);
 }
 .shot img { display: block; width: 100%; }
 .shot figcaption {
-  padding: .55rem .9rem;
+  padding: .45rem .8rem;
   border-top: 1px solid var(--border);
   background: var(--bg-soft);
   font-size: .84rem;
@@ -322,40 +309,29 @@ kbd {
 }
 
 /* ========== 本文 ========== */
-.prose { padding-bottom: 5rem; }
+.prose { padding-bottom: 2.5rem; }
 
 .prose h2 {
-  margin: 2.5rem 0 .85rem;
-  padding-top: 1.5rem;
+  margin: 1.75rem 0 .7rem;
+  padding-top: 1.1rem;
   border-top: 1px solid var(--border);
   font-size: 1.5rem;
   letter-spacing: -.005em;
 }
 .hero + h2, .prose > h2:first-child { border-top: 0; padding-top: 0; }
 
-/* 見出しの左に短いアクセント線を置き、セクションの始まりを分かりやすくする */
-.prose h2::before {
-  content: "";
-  display: block;
-  width: 2.25rem;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--accent);
-  margin-bottom: .7rem;
-}
-
 .prose h3 {
-  margin: 2.25rem 0 .75rem;
+  margin: 1.5rem 0 .6rem;
   font-size: 1.13rem;
 }
 
-.prose h4 { margin: 1.75rem 0 .5rem; font-size: 1rem; }
+.prose h4 { margin: 1.25rem 0 .4rem; font-size: 1rem; }
 
 .prose p, .prose li { overflow-wrap: anywhere; }
 
 
 .prose ul, .prose ol { padding-left: 1.35rem; }
-.prose li { margin-block: .35rem; }
+.prose li { margin-block: .25rem; }
 .prose li::marker { color: var(--fg-muted); }
 
 .prose strong { font-weight: 700; }
@@ -363,7 +339,7 @@ kbd {
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.25rem 0;
+  margin: .9rem 0;
   font-size: .93rem;
 }
 .prose thead th {
@@ -375,7 +351,7 @@ kbd {
 }
 .prose th, .prose td {
   border: 1px solid var(--border);
-  padding: .6rem .85rem;
+  padding: .45rem .7rem;
   vertical-align: top;
   overflow-wrap: anywhere;
 }
@@ -392,8 +368,8 @@ kbd {
 .prose pre {
   background: var(--bg-code);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem 1.15rem;
+  border-radius: 8px;
+  padding: .8rem 1rem;
   overflow-x: auto;
   line-height: 1.65;
   font-size: .88rem;
@@ -401,14 +377,14 @@ kbd {
 .prose pre code { background: none; border: 0; padding: 0; font-size: inherit; }
 
 .prose blockquote {
-  margin: 1.25rem 0;
+  margin: .9rem 0;
   padding: .1rem 1.1rem;
   border-left: 3px solid var(--accent);
   color: var(--fg-muted);
 }
 
 .prose hr {
-  margin: 3rem 0;
+  margin: 2rem 0;
   border: 0;
   border-top: 1px solid var(--border);
 }
@@ -417,18 +393,17 @@ kbd {
 .cards {
   list-style: none;
   padding: 0;
-  margin: 1.25rem 0 0;
+  margin: .9rem 0 0;
   display: grid;
-  gap: .9rem;
+  gap: .7rem;
   grid-template-columns: repeat(3, 1fr);
 }
 .cards li {
   margin: 0;
-  padding: 1.1rem 1.25rem;
+  padding: .85rem 1.05rem;
   border: 1px solid var(--border);
-  border-top: 3px solid var(--accent-2);
-  border-radius: 12px;
-  background: var(--bg-soft);
+  border-top: 1px solid var(--accent-2);
+  border-radius: 8px;
   line-height: 1.7;
 }
 /* アイコンの二色を交互に置く。枚数が増えても緑青緑…と続く */
@@ -441,9 +416,9 @@ kbd {
 .settings {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 1.5rem;
+  gap: 1.1rem;
   align-items: start;
-  margin: 1.25rem 0;
+  margin: .9rem 0;
 }
 .settings .shot { width: 20rem; }
 
@@ -452,16 +427,15 @@ kbd {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: .8rem;
+  gap: .6rem;
   align-content: start;
 }
 .settings-list li {
   margin: 0;
-  padding: .9rem 1.15rem;
+  padding: .7rem .95rem;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: 10px;
-  background: var(--bg-soft);
+  border-left: 1px solid var(--accent);
+  border-radius: 8px;
   line-height: 1.7;
 }
 .settings-list b { display: block; margin-bottom: .1rem; }
@@ -471,18 +445,17 @@ kbd {
    要件の表・補足・変換キーの注意を 1 枚のカードに縦に積む。左右に分けると
    視線が行き来して読みにくかったため、上から順に読める形に戻した。 */
 .env {
-  margin: 1.25rem 0;
+  margin: .9rem 0;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--bg-soft);
-  padding: .35rem 1.5rem 1.4rem;
+  border-radius: 8px;
+  padding: .25rem 1.2rem 1rem;
 }
 .env table { margin-bottom: .75rem; }
 .env thead th { background: none; }
 .env th, .env td {
   border: 0;
   border-bottom: 1px solid var(--border);
-  padding: .65rem .25rem;
+  padding: .5rem .25rem;
 }
 .env tbody tr:last-child th,
 .env tbody tr:last-child td { border-bottom: 0; }
@@ -492,29 +465,28 @@ kbd {
 
 /* カード内で色を変えて、注意であることを見た目で分ける */
 .env-warn {
-  margin-top: 1.25rem;
-  padding: 1rem 1.2rem;
+  margin-top: .9rem;
+  padding: .8rem 1rem;
   border: 1px solid var(--border-strong);
-  border-left: 4px solid var(--accent);
-  border-radius: 10px;
-  background: var(--bg);
+  border-left: 2px solid var(--accent);
+  border-radius: 8px;
+  background: var(--bg-soft);
 }
 .env-warn > :first-child { margin-top: 0; }
 .env-warn > :last-child { margin-bottom: 0; }
 
 /* ========== 制限事項 ========== */
 .limits {
-  margin: 1.25rem 0;
+  margin: .9rem 0;
   display: grid;
-  gap: 1rem;
+  gap: .7rem;
 }
 
 .limit-item {
   border: 1px solid var(--border);
-  border-left: 4px solid var(--accent-2);
-  border-radius: 10px;
-  background: var(--bg-soft);
-  padding: 1.1rem 1.3rem;
+  border-left: 1px solid var(--accent-2);
+  border-radius: 8px;
+  padding: .85rem 1.05rem;
 }
 /* .cards と同じく交互に。「できること」と「できないこと」は別々の .limits に
    入っているので、それぞれ緑始まりになる。 */
@@ -522,10 +494,9 @@ kbd {
 .limit-item > :first-child { margin-top: 0; }
 .limit-item > :last-child { margin-bottom: 0; }
 .limit-item h3 {
-  margin: 0 0 .5rem;
+  margin: 0 0 .4rem;
   font-size: 1.02rem;
 }
-.limit-item pre { background: var(--bg); }
 
 /* ========== できること + 変更履歴（2列） ========== */
 /* 変更履歴を独立した節にすると、版が増えるたびにページが縦に伸びる。できることと
@@ -535,7 +506,7 @@ kbd {
 .can-row {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
   align-items: stretch;
 }
 .can-col { min-width: 0; }
@@ -543,7 +514,7 @@ kbd {
 
 /* 見出しをできること側と同じ高さに揃える。h2 の既定マージンだけだと
    グリッドの行頭で微妙にずれる。 */
-.can-row h2 { margin-top: 1.6rem; }
+.can-row h2 { margin-top: 1.2rem; }
 
 .changelog {
   display: flex;
@@ -559,26 +530,22 @@ kbd {
   position: relative;
   flex: 1;
   min-height: 0;
-  margin-top: 1.25rem;
+  margin-top: .9rem;
   border: 1px solid var(--border);
-  border-left: 4px solid var(--accent-2);
-  border-radius: 10px;
-  background: var(--bg-soft);
+  border-left: 1px solid var(--accent-2);
+  border-radius: 8px;
   overflow: hidden;   /* 角丸から中身がはみ出さないように */
 }
 .changelog-scroll {
   position: absolute;
   inset: 0;
   overflow-y: auto;
-  padding: 1.1rem 1.3rem;
-  /* 下端をぼかして、続きがあることを見せる。スクロール位置に追従させず
-     常に出しておく（版は増え続ける前提なので、初期状態から溢れていてよい）。 */
-  mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent 100%);
+  padding: .85rem 1.05rem;
 }
 .changelog-scroll > :first-child { margin-top: 0; }
-.changelog-scroll > :last-child { margin-bottom: 1.5rem; }
+.changelog-scroll > :last-child { margin-bottom: .5rem; }
 .changelog-scroll h3 {
-  margin: 1.4rem 0 .4rem;
+  margin: 1.1rem 0 .35rem;
   font-size: .98rem;
 }
 .changelog-scroll h3:first-of-type { margin-top: 0; }
@@ -589,7 +556,7 @@ kbd {
 /* 各項目は「見出しの一文 + 説明」の2段。説明は色を落として、
    一覧としてタイトルだけを拾い読みできるようにする。 */
 .changelog-scroll li {
-  margin: .8rem 0;
+  margin: .6rem 0;
   font-size: .92rem;
   line-height: 1.65;
 }
@@ -602,11 +569,11 @@ kbd {
 
 /* ========== 注意ボックス ========== */
 .note {
-  margin: 1.5rem 0;
-  padding: 1.1rem 1.3rem;
+  margin: 1.1rem 0;
+  padding: .85rem 1.05rem;
   border: 1px solid var(--border-strong);
-  border-left: 4px solid var(--accent);
-  border-radius: 10px;
+  border-left: 2px solid var(--accent);
+  border-radius: 8px;
   background: var(--bg-soft);
 }
 .note > :first-child { margin-top: 0; }
@@ -620,15 +587,14 @@ kbd {
    details / summary の標準機能だけで折りたたむ。JavaScript は使わない。
    折りたたんでいても中身は初期 HTML に含まれるため、検索エンジンにも
    AI クローラにも全文が読まれる。縦を伸ばさずに情報だけ載せられる。 */
-.faq { margin: 1.25rem 0; display: grid; gap: .5rem; }
+.faq { margin: .9rem 0; display: grid; gap: .35rem; }
 
 .faq details {
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg-soft);
+  border-radius: 8px;
 }
 .faq summary {
-  padding: .8rem 1.2rem;
+  padding: .6rem 1rem;
   font-weight: 600;
   cursor: pointer;
   list-style: none;
@@ -651,21 +617,20 @@ kbd {
 .faq summary:hover { color: var(--accent-text); }
 
 .faq details > :not(summary) {
-  margin: 0 1.2rem 1rem;
+  margin: 0 1rem .8rem;
   font-size: .94rem;
 }
 .faq details > p:first-of-type { margin-top: .1rem; }
 
 /* ========== 目次（トラブルシューティング） ========== */
 .toc {
-  margin: 1.75rem 0 2.5rem;
-  padding: 1.25rem 1.5rem;
+  margin: 1.2rem 0 1.6rem;
+  padding: .9rem 1.1rem;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--bg-soft);
+  border-radius: 8px;
 }
 .toc-title {
-  margin: 0 0 .75rem;
+  margin: 0 0 .6rem;
   font-size: .78rem;
   font-weight: 700;
   letter-spacing: .09em;
@@ -693,7 +658,7 @@ kbd {
 /* フッターは廃止し、リンクはヘッダーのナビへ集約した。 */
 
 /* ========== 下層ページの見出し ========== */
-.page-head { padding: 2.75rem 0 .5rem; }
+.page-head { padding: 1.75rem 0 .4rem; }
 .page-head h1 {
   margin: 0;
   font-size: clamp(1.6rem, 4.5vw, 2.2rem);
@@ -721,13 +686,12 @@ kbd {
   .changelog-scroll {
     position: static;
     overflow-y: visible;
-    mask-image: none;
   }
   .changelog-scroll > :last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 34rem) {
-  .hero { padding: 2.5rem 0 2rem; }
+  .hero { padding: 1.75rem 0 1.5rem; }
   .hero-head { flex-direction: column; text-align: center; gap: .75rem; }
   .demo-row, .demo-key { padding-inline: 1.1rem; }
   .env { padding-inline: 1.1rem; }
