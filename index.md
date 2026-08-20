@@ -1,6 +1,6 @@
 ---
 title: ro-maji IME Rescue
-description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ。右Ctrl キーにも変更できます。15日間の無料体験版があります。
+description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ。右Ctrl キーにも変更できます。30日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
 updated: 2026-08-20
 ---
@@ -18,7 +18,7 @@ updated: 2026-08-20
 
   <div class="cta">
     <a class="btn-primary" href="{{ site.store_url }}">Microsoft Store で入手</a>
-    <p class="cta-note">15日間の無料体験版があります。ご購入の前に<a href="{{ '/#env' | relative_url }}">動作環境</a>と<a href="{{ '/#limits' | relative_url }}">できないこと</a>をご確認ください。</p>
+    <p class="cta-note">30日間の無料体験版があります。ご購入の前に<a href="{{ '/#env' | relative_url }}">動作環境</a>と<a href="{{ '/#limits' | relative_url }}">できないこと</a>をご確認ください。</p>
   </div>
 
   <div class="hero-showcase">
@@ -263,7 +263,7 @@ PDFwoexportshimasu  → PDFを得x歩rtします
   </details>
   <details>
     <summary>無料で試せますか</summary>
-    <p>15日間の無料体験版があります。Microsoft Store から入手できます。</p>
+    <p>30日間の無料体験版があります。Microsoft Store から入手できます。</p>
   </details>
   <details>
     <summary>インターネット接続や .NET は必要ですか</summary>
@@ -302,7 +302,7 @@ PDFwoexportshimasu  → PDFを得x歩rtします
       "name": "無料で試せますか",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "15日間の無料体験版があります。Microsoft Store から入手できます。"
+        "text": "30日間の無料体験版があります。Microsoft Store から入手できます。"
       }
     },
     {
