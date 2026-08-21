@@ -268,6 +268,8 @@ img { max-width: 100%; height: auto; }
   font-size: .82rem;
   color: var(--fg-muted);
 }
+/* 薄い灰色のまま太字にしても強調にならないので、本文の色に戻す。 */
+.demo-key strong { color: var(--fg); }
 
 kbd {
   font-family: inherit;
@@ -299,6 +301,7 @@ kbd {
   background: #fff;
   overflow: hidden;
 }
+.shot a { display: block; cursor: zoom-in; }
 .shot img { display: block; width: 100%; }
 .shot figcaption {
   padding: .45rem .8rem;
@@ -420,7 +423,8 @@ kbd {
   align-items: start;
   margin: .9rem 0;
 }
-.settings .shot { width: 20rem; }
+/* 原寸 537px。これ以上広げると説明の列が縮んで節全体が縦に伸びる。 */
+.settings .shot { width: 25rem; }
 
 .settings-list {
   list-style: none;

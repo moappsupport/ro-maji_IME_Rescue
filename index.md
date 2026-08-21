@@ -2,7 +2,7 @@
 title: ro-maji IME Rescue
 description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ。右Ctrl キーにも変更できます。30日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
-updated: 2026-08-20
+updated: 2026-08-21
 ---
 
 <div class="hero">
@@ -14,7 +14,7 @@ updated: 2026-08-20
     </div>
   </div>
 
-  <p class="hero-lead">IME をオフにしたまま打ってしまったローマ字を<strong>変換キーひとつ</strong>で日本語に入力し直します、消して打ち直す必要はありません。</p>
+  <p class="hero-lead">IME をオフ（半角英数）にしたまま打ってしまったローマ字を<strong>キーひとつ</strong>で日本語に変換し、打ち直す手間を無くします。（Microsoft IME / Google 日本語入力で動作確認済み）</p>
 
   <div class="cta">
     <a class="btn-primary" href="{{ site.store_url }}">Microsoft Store で入手</a>
@@ -29,7 +29,7 @@ updated: 2026-08-20
       </div>
       <div class="demo-key">
         <kbd>変換</kbd>
-        <span>カーソルを文字列の直後に置いて押すだけ。範囲を選択する必要はありません。</span>
+        <strong>カーソルを文字列の直後に置いて押すだけ。範囲を選択する必要はありません。</strong>
       </div>
       <div class="demo-row is-after">
         <span class="demo-label">日本語に入力し直される</span>
@@ -38,22 +38,26 @@ updated: 2026-08-20
     </div>
     <ul class="cards">
       <li><b>普段の入力を邪魔しません</b><span>IME がオンのときは、そのキー本来の動作をそのまま行います。</span></li>
-      <li><b>失敗しても文章は壊れません</b><span>読み取りや選択の確認に失敗した場合は、文字を消さずに中断します。</span></li>
+      <li><b>変換キーひとつで完結</b><span>覚えるショートカットはありません（右Ctrl キーにも変更できます）。</span></li>
     </ul>
   </div>
 
-  <p class="hero-foot">起動するとタスクトレイに常駐します。設定で右Ctrl キーにも変更できます（Microsoft IME / Google 日本語入力で動作確認済み）。読み取りにコピー操作を使うため、処理中はクリップボードを一度上書きします。</p>
+  <p class="hero-foot">起動するとタスクトレイに常駐します。読み取りにコピー操作を使うため、処理中はクリップボードを一度上書きします。</p>
 </div>
 
 ## 実際の画面 {#screens}
 
 <div class="shots">
   <figure class="shot">
-    <img src="{{ '/assets/img/before.png' | relative_url }}" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="370" loading="lazy">
+    <a href="{{ '/assets/img/before.png' | relative_url }}">
+      <img src="{{ '/assets/img/before.png' | relative_url }}" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="370" loading="lazy">
+    </a>
     <figcaption>変換キーを押す前</figcaption>
   </figure>
   <figure class="shot">
-    <img src="{{ '/assets/img/after.png' | relative_url }}" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
+    <a href="{{ '/assets/img/after.png' | relative_url }}">
+      <img src="{{ '/assets/img/after.png' | relative_url }}" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
+    </a>
     <figcaption>変換キーを押した後</figcaption>
   </figure>
 </div>
@@ -102,17 +106,7 @@ Bandeikimasu         → B案で行きます
 
 ### v1.2.1
 
-- **まれに変換キーに反応しなくなることがある問題を修正しました**
-
-  クリップボードを他のアプリが長く使用しているときなどに、キー監視が Windows によって解除されてしまうことがありました。解除されると再起動するまで反応しません。仕組みを見直し、あわせて解除された場合は自動で復帰するようにしました。
-
-- **中止したときや終了したときに、打ち直しが途中で残らないようにしました**
-
-  変換の途中でアプリを終了・再起動すると、文字を消したところで処理が止まることがありました。安全な位置まで処理を止めてから終わります。
-
-- **打ち直せない文字が含まれる場合は、文字を消さずに中止するようにしました**
-
-  これまでは打ち直せない文字を飛ばしていたため、1文字だけ欠けた文章が残ることがありました。消す前に確認します。
+- **内部の安定性を改善しました**
 
 ### v1.2.0
 
@@ -150,7 +144,10 @@ Bandeikimasu         → B案で行きます
 
 <div class="settings">
   <figure class="shot">
-    <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="537" height="1059" loading="lazy">
+    <a href="{{ '/assets/img/settings.png' | relative_url }}">
+      <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="537" height="1059" loading="lazy">
+    </a>
+    <figcaption>クリックすると原寸で開きます</figcaption>
   </figure>
   <ul class="settings-list">
     <li><b>トリガーキー</b><span>変換キー（既定）か右Ctrl キーを選びます。英語配列（US / ANSI）のキーボードには変換キーが無いため、右Ctrl キーをお使いください。</span></li>
@@ -195,7 +192,7 @@ desunodesannposisimasu  ← ここにカーソルがあると、この範囲だ�
 
 ### 長い文章を一度に変換すると先頭が確定されます
 
-一度に変換する文字数が多いと、**IME が先頭のほうから順に変換を自動で確定していきます。** 確定された部分は変換候補を選び直せません。目安は**ローマ字で 150 文字程度**で、文の区切り方によって前後します。
+一度に変換する文字数が多いと、**IME が先頭のほうから順に変換を自動で確定していきます。** 確定された部分は変換候補を選び直せません。目安は**ローマ字で 150 文字程度**で、文の区切り方によって前後します（[詳しく]({{ '/troubleshooting.html#long-text' | relative_url }})）。
 
 所要時間も文字数に比例して伸びます。下の表は**最速にしても縮まない下限**で、実際はお使いのアプリと PC の重さでこれより長くかかります。
 
@@ -205,7 +202,7 @@ desunodesannposisimasu  ← ここにカーソルがあると、この範囲だ�
 | 500 文字 | 約 4 秒 | 約 6 秒 | 約 8 秒 |
 | 800 文字 | 約 6.4 秒 | 約 9.6 秒 | 約 13 秒 |
 
-**文や文節の区切りごとに変換してください。** この間はキーボードの入力を止めているため、長い文章ほど「キーが効かない時間」が延びます（[詳しく]({{ '/troubleshooting.html#long-text' | relative_url }})）。
+**文や文節の区切りごとに変換してください。** この間はキーボードの入力を止めているため、長い文章ほど「キーが効かない時間」が延びます（[詳しく]({{ '/troubleshooting.html#keyboard-blocked-briefly' | relative_url }})）。
 
 </div>
 <div class="limit-item" markdown="1">
