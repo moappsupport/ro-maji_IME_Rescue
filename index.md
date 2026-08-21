@@ -49,15 +49,11 @@ updated: 2026-08-21
 
 <div class="shots">
   <figure class="shot">
-    <a href="{{ '/assets/img/before.png' | relative_url }}">
-      <img src="{{ '/assets/img/before.png' | relative_url }}" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="370" loading="lazy">
-    </a>
+    <img src="{{ '/assets/img/before.png' | relative_url }}" alt="IME をオフのまま入力した半角ローマ字がメモ帳に並んでいる状態" width="1920" height="370" loading="lazy">
     <figcaption>変換キーを押す前</figcaption>
   </figure>
   <figure class="shot">
-    <a href="{{ '/assets/img/after.png' | relative_url }}">
-      <img src="{{ '/assets/img/after.png' | relative_url }}" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
-    </a>
+    <img src="{{ '/assets/img/after.png' | relative_url }}" alt="変換キーを押して同じ文が日本語に入力し直された状態" width="1920" height="370" loading="lazy">
     <figcaption>変換キーを押した後</figcaption>
   </figure>
 </div>
@@ -144,10 +140,7 @@ Bandeikimasu         → B案で行きます
 
 <div class="settings">
   <figure class="shot">
-    <a href="{{ '/assets/img/settings.png' | relative_url }}">
-      <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="537" height="1059" loading="lazy">
-    </a>
-    <figcaption>クリックすると原寸で開きます</figcaption>
+    <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="537" height="1059" loading="lazy">
   </figure>
   <ul class="settings-list">
     <li><b>トリガーキー</b><span>変換キー（既定）か右Ctrl キーを選びます。英語配列（US / ANSI）のキーボードには変換キーが無いため、右Ctrl キーをお使いください。</span></li>

@@ -301,7 +301,6 @@ kbd {
   background: #fff;
   overflow: hidden;
 }
-.shot a { display: block; cursor: zoom-in; }
 .shot img { display: block; width: 100%; }
 .shot figcaption {
   padding: .45rem .8rem;
