@@ -266,10 +266,8 @@ img { max-width: 100%; height: auto; }
   border-bottom: 1px solid var(--border);
   background: var(--bg);
   font-size: .82rem;
-  color: var(--fg-muted);
+  color: var(--fg);
 }
-/* 薄い灰色のまま太字にしても強調にならないので、本文の色に戻す。 */
-.demo-key strong { color: var(--fg); }
 
 kbd {
   font-family: inherit;
@@ -422,8 +420,10 @@ kbd {
   align-items: start;
   margin: .9rem 0;
 }
-/* 原寸 537px。これ以上広げると説明の列が縮んで節全体が縦に伸びる。 */
-.settings .shot { width: 25rem; }
+/* 原寸 537px。上限 25rem は「これ以上広げると説明の列が縮んで節全体が縦に伸びる」
+   実測値（1152px 幅で計測）。1列に落ちる 48rem までの間は幅に対する比率で縮め、
+   下限は変更前の 20rem に置く。 */
+.settings .shot { width: clamp(20rem, 35vw, 25rem); }
 
 .settings-list {
   list-style: none;
@@ -479,9 +479,13 @@ kbd {
 .env-warn > :last-child { margin-bottom: 0; }
 
 /* ========== 制限事項 ========== */
+/* 列は minmax(0, 1fr)。既定の auto だと、改行しない pre（ローマ字の例）の幅まで列が広がり、
+   スマートフォンの幅で枠の右側が切れる（html の overflow-x: hidden で横スクロールにもならない）。
+   PC の幅では見た目は変わらない。 */
 .limits {
   margin: .9rem 0;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: .7rem;
 }
 
@@ -698,4 +702,7 @@ kbd {
   .hero-head { flex-direction: column; text-align: center; gap: .75rem; }
   .demo-row, .demo-key { padding-inline: 1.1rem; }
   .env { padding-inline: 1.1rem; }
+  /* スマートフォンではナビが折り返してヘッダーの背が高くなるので、固定表示をやめて本文の表示領域を空ける。
+     static にすると ::after の帯の基準がページ全体へ移るため relative にする。 */
+  .site-header { position: relative; }
 }

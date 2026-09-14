@@ -1,6 +1,6 @@
 title: ro-maji IME Rescue
-tagline: ローマ字を日本語に変換するアプリ
-description: IME をオフにしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐ツール
+tagline: IME オフで打ったローマ字を、その場で日本語に
+description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ
 lang: ja
 
 # canonical・OGP・sitemap の absolute_url が完全な URL を組み立てるために必要。
@@ -12,11 +12,20 @@ baseurl: "/ro-maji_IME_Rescue"
 # publisher は msix/AppxManifest.xml の PublisherDisplayName と一致させる
 # （構造化データの発行元と Store のリスティングを結び付けるため）。
 store_url: "https://apps.microsoft.com/detail/9ND04SG0293F"
-app_version: "1.2.1"
+app_version: "1.2.2"
 publisher: "moapp"
 email: "moappsupport@gmail.com"
-og_image: "/assets/img/og.png"
+og_image: "/assets/img/og.png?v=3"
 theme_color: "#0014bb"
+
+# 製品名の読み方。トップの製品名の下と、構造化データの alternateName に出す。
+# Store の並べ替えタイトル（STORE_LISTING.md）と同じ表記にする。
+name_reading: "ローマ字 IME レスキュー"
+
+# 価格（円）と無料体験の日数。本文・FAQ（_data/faq.yml）・構造化データがここを参照する。
+# セールや市場で動きうる値なので、版を上げるときに Partner Center の設定と合っているか確かめる。
+price_jpy: "350"
+trial_days: "30"
 
 # テーマは使わず _layouts/default.html と assets/css/style.css で組む。
 # 既定テーマに依存しないぶん、配色やレイアウトを完全に制御できる。
