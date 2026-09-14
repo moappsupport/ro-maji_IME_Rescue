@@ -285,10 +285,15 @@ PDFwoexportshimasu  → PDFを得x歩rtします
 ## よくある質問 {#faq}
 
 <div class="faq">
+{%- comment -%}
+  答えの置き換えは、ここと下の構造化データの2か所とも assign で行う。出力タグの中に "{price}" のような閉じ波かっこを
+  含む文字列を書くと、GitHub Pages の Jekyll 3.10（Liquid 4）では変数がそこで切れたと見なされ、ビルドが失敗する。
+{%- endcomment -%}
 {%- for item in site.data.faq %}
+  {%- assign answer = item.a | replace: "{price}", site.price_jpy | replace: "{trial}", site.trial_days | replace: "{base}", site.baseurl %}
   <details>
     <summary>{{ item.q }}</summary>
-    <p>{{ item.a | replace: "{price}", site.price_jpy | replace: "{trial}", site.trial_days | replace: "{base}", site.baseurl }}</p>
+    <p>{{ answer }}</p>
   </details>
 {%- endfor %}
 </div>
@@ -318,12 +323,13 @@ PDFwoexportshimasu  → PDFを得x歩rtします
   "@id": "{{ '/' | absolute_url }}#faq",
   "mainEntity": [
 {%- for item in site.data.faq %}
+  {%- assign answer = item.a | replace: "{price}", site.price_jpy | replace: "{trial}", site.trial_days | replace: "{base}", site.baseurl %}
     {
       "@type": "Question",
       "name": {{ item.q | jsonify }},
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": {{ item.a | replace: "{price}", site.price_jpy | replace: "{trial}", site.trial_days | replace: "{base}", site.baseurl | strip_html | jsonify }}
+        "text": {{ answer | strip_html | jsonify }}
       }
     }{% unless forloop.last %},{% endunless %}
 {%- endfor %}
