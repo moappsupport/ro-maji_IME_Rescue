@@ -425,6 +425,34 @@ kbd {
    下限は変更前の 20rem に置く。 */
 .settings .shot { width: clamp(20rem, 35vw, 25rem); }
 
+/* クリックで原寸（560px）まで拡大する。<dialog> なので Esc でも閉じる。
+   高さで抑えると背の低い画面では縮小になるので、幅は原寸のまま中をスクロールさせる。 */
+.shot-zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.zoom {
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  max-width: 92vw;
+  max-height: 92vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: zoom-out;
+}
+.zoom::backdrop { background: rgba(0, 0, 0, .6); }
+.zoom img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
 .settings-list {
   list-style: none;
   margin: 0;

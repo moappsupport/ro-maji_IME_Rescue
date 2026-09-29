@@ -122,8 +122,8 @@ kaigisiryou  → 会議資料
 
 ### v1.2.3
 
-- エクスプローラーでファイル・フォルダの名前を変更中に使えなかった問題を修正
-- クリップボードの扱いが「元の内容を復元」のとき、処理の開始を待つ間に別のアプリへ移っても、元の画面へ戻して処理を続けていた問題を修正
+- ファイルやフォルダの名前を変更しているときに使えなかった問題を修正
+- 内部の安定性を改善
 
 ### v1.2.2
 
@@ -166,8 +166,13 @@ kaigisiryou  → 会議資料
 
 <div class="settings">
   <figure class="shot">
-    <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="560" height="1018" loading="lazy">
+    <button type="button" class="shot-zoom" aria-label="設定画面を拡大して表示" onclick="document.getElementById('settings-zoom').showModal()">
+      <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="560" height="1018" loading="lazy">
+    </button>
   </figure>
+  <dialog id="settings-zoom" class="zoom" aria-label="設定画面（拡大）" onclick="this.close()">
+    <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="" width="560" height="1018" loading="lazy">
+  </dialog>
   <ul class="settings-list">
     <li><b>トリガーキー</b><span>変換キー（既定）か右Ctrl キーを選びます。英語配列（US / ANSI）のキーボードには変換キーが無いため、右Ctrl キーをお使いください。</span></li>
     <li><b>取得範囲</b><span>カーソルからどこまで遡って読み取るかを選びます。行頭まで／直前2行まで／文書先頭まで（既定）。「行頭まで」は画面の折り返しで途中までしか取れないアプリがあるため、既定は最も確実な「文書先頭まで」です。広く取っても<b>変換される範囲は変わりません</b>。</span></li>
