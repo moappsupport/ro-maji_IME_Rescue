@@ -90,7 +90,7 @@
       "@type": "SoftwareApplication",
       "@id": "{{ '/' | absolute_url }}#app",
       "name": {{ site.title | jsonify }},
-      "alternateName": {{ site.name_reading | jsonify }},
+      "alternateName": [{{ site.name_reading | jsonify }}, {{ site.store_title | jsonify }}],
       "description": {{ site.description | jsonify }},
       "url": {{ '/' | absolute_url | jsonify }},
       "applicationCategory": "UtilitiesApplication",
@@ -102,6 +102,7 @@
       "featureList": [
         "IME をオフのまま打ったローマ字を、変換キーまたは右Ctrl キーを 1 回押すだけで日本語に入力し直す",
         "範囲を選択する必要がなく、文字列の直後にカーソルを置いてキーを押すだけで使える",
+        "エクスプローラーやデスクトップで、ファイルやフォルダの名前を変更しているときにも使える",
         "大文字の英単語は、1 文字でもそのままの表記で残す",
         "英語配列（US / ANSI）のキーボードでは右Ctrl キーで使える",
         "IME がオンのときは、そのキー本来の動作をそのまま行う",
@@ -116,8 +117,9 @@
       ],
       "inLanguage": {{ site.lang | jsonify }},
       "installUrl": {{ site.store_url | jsonify }},
+      "sameAs": [{{ site.store_url | jsonify }}],
       "softwareHelp": {{ '/troubleshooting.html' | absolute_url | jsonify }},
-      "releaseNotes": "v1.2.2: 処理中の中止やクリップボードの扱いなどに関する問題を修正しました。",
+      "releaseNotes": "v1.2.3: エクスプローラーでファイルやフォルダの名前を変更しているときに使えなかった問題を修正しました。",
       "publisher": { "@id": "{{ '/' | absolute_url }}#publisher" },
       "isAccessibleForFree": false,
       "offers": {

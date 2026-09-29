@@ -12,15 +12,19 @@ baseurl: "/ro-maji_IME_Rescue"
 # publisher は msix/AppxManifest.xml の PublisherDisplayName と一致させる
 # （構造化データの発行元と Store のリスティングを結び付けるため）。
 store_url: "https://apps.microsoft.com/detail/9ND04SG0293F"
-app_version: "1.2.2"
+app_version: "1.2.3"
 publisher: "moapp"
 email: "moappsupport@gmail.com"
 og_image: "/assets/img/og.png?v=3"
 theme_color: "#0014bb"
 
 # 製品名の読み方。トップの製品名の下と、構造化データの alternateName に出す。
-# Store の並べ替えタイトル（STORE_LISTING.md）と同じ表記にする。
+# Store には読み方を入れる欄（並べ替えタイトル）が無いので、ここだけで持つ。
 name_reading: "ローマ字 IME レスキュー"
+
+# Store に出ている製品名（STORE_LISTING.md の「製品名」と同じ）。構造化データの alternateName に出し、
+# Store の製品ページと同じものだと検索エンジンや AI が結び付けられるようにする。
+store_title: "ro-maji IME Rescue ローマ字を日本語に変換するアプリ"
 
 # 価格（円）と無料体験の日数。本文・FAQ（_data/faq.yml）・構造化データがここを参照する。
 # セールや市場で動きうる値なので、版を上げるときに Partner Center の設定と合っているか確かめる。

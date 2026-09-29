@@ -3,7 +3,7 @@ title: IME オフで打ったローマ字を日本語に変換
 description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows アプリ。英語配列では右Ctrl キーで使えます。API などの大文字は残ります。30日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
 # description では Liquid が使えないので、体験日数（_config.yml の trial_days）を直接書いている。
-updated: 2026-09-14
+updated: 2026-09-29
 ---
 
 <div class="hero">
@@ -99,6 +99,17 @@ Bandeikimasu         → B案で行きます
 ```
 
 </div>
+<div class="limit-item" markdown="1">
+
+### ファイルやフォルダの名前の変更にも使えます
+
+エクスプローラーやデスクトップで名前を変更している入力欄でも、ローマ字の直後にカーソルを置いて変換キーを押すだけです（v1.2.3 から）。
+
+```
+kaigisiryou  → 会議資料
+```
+
+</div>
 </div>
 
 </section>
@@ -108,6 +119,11 @@ Bandeikimasu         → B案で行きます
 
 <div class="changelog-body">
 <div class="changelog-scroll" markdown="1">
+
+### v1.2.3
+
+- エクスプローラーでファイル・フォルダの名前を変更中に使えなかった問題を修正
+- クリップボードの扱いが「元の内容を復元」のとき、処理の開始を待つ間に別のアプリへ移っても、元の画面へ戻して処理を続けていた問題を修正
 
 ### v1.2.2
 
