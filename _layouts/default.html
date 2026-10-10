@@ -53,6 +53,7 @@
       "@type": "WebSite",
       "@id": "{{ '/' | absolute_url }}#website",
       "name": {{ site.title | jsonify }},
+      "alternateName": {{ site.name_reading | jsonify }},
       "url": {{ '/' | absolute_url | jsonify }},
       "inLanguage": {{ site.lang | jsonify }},
       "publisher": { "@id": "{{ '/' | absolute_url }}#publisher" }
@@ -65,6 +66,7 @@
       "description": {{ page_desc | jsonify }},
       "inLanguage": {{ site.lang | jsonify }},
       "isPartOf": { "@id": "{{ '/' | absolute_url }}#website" },
+      "breadcrumb": { "@id": "{{ page.url | absolute_url }}#breadcrumb" },
       "about": { "@id": "{{ '/' | absolute_url }}#app" }{% if page.updated %},
       "dateModified": {{ page.updated | jsonify }}{% endif %}
     },
@@ -95,6 +97,7 @@
       "url": {{ '/' | absolute_url | jsonify }},
       "applicationCategory": "UtilitiesApplication",
       "applicationSubCategory": "日本語入力支援",
+      "keywords": "IME オフ, ローマ字 日本語 変換, 半角英数, 打ち直し, 変換キー, 右Ctrl キー, 日本語入力, Windows",
       "operatingSystem": "Windows 10, Windows 11",
       "processorRequirements": "x64",
       "softwareVersion": {{ site.app_version | jsonify }},
@@ -112,8 +115,21 @@
       ],
       "image": {{ site.og_image | absolute_url | jsonify }},
       "screenshot": [
-        {{ '/assets/img/before.png' | absolute_url | jsonify }},
-        {{ '/assets/img/after.png' | absolute_url | jsonify }}
+        {
+          "@type": "ImageObject",
+          "url": {{ '/assets/img/before.png' | absolute_url | jsonify }},
+          "caption": "変換キーを押す前。IME をオフのまま打ったローマ字がメモ帳に並んでいる"
+        },
+        {
+          "@type": "ImageObject",
+          "url": {{ '/assets/img/after.png' | absolute_url | jsonify }},
+          "caption": "変換キーを押した後。同じ文が日本語に入力し直され、変換候補を選んで確定できる"
+        },
+        {
+          "@type": "ImageObject",
+          "url": {{ '/assets/img/settings.png' | absolute_url | jsonify }},
+          "caption": "設定画面。トリガーキー・取得範囲・動作の速さ・クリップボード・スタートアップ"
+        }
       ],
       "inLanguage": {{ site.lang | jsonify }},
       "installUrl": {{ site.store_url | jsonify }},
@@ -134,34 +150,108 @@
   ]
 }
 </script>
+<meta name="color-scheme" content="light dark">
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 </head>
-<body>
+<body{% if page.url == "/" %} class="is-home"{% endif %}>
+<a class="skip" href="#main">本文へ移動</a>
 
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{{ '/' | relative_url }}">
-      <img src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="32" height="32">
+      <img src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="34" height="34">
       <span class="brand-name">{{ site.title }}</span>
     </a>
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="サイト内">
+      <a href="{{ '/#howto' | relative_url }}">使い方</a>
+      <a href="{{ '/#can' | relative_url }}">できること</a>
+      <a href="{{ '/#settings' | relative_url }}">設定</a>
+      <a href="{{ '/#pricing' | relative_url }}">価格</a>
+      <a href="{{ '/#faq' | relative_url }}">よくある質問</a>
       <a href="{{ '/troubleshooting.html' | relative_url }}">トラブルシューティング</a>
-      <a href="{{ '/privacy.html' | relative_url }}">プライバシーポリシー</a>
-      <a href="mailto:{{ site.email }}">お問い合わせ</a>
     </nav>
+    <a class="header-cta" href="{{ site.store_url }}?cid=site_header">無料で試す</a>
   </div>
 </header>
 
-<main>
-{% if page.url != "/" %}
-  <div class="wrap page-head">
-    <h1>{{ page.title }}</h1>
+<main id="main">
+{% if page.url == "/" %}
+{{ content }}
+{% else %}
+  <div class="page-hero">
+    <div class="wrap">
+      <p class="crumb"><a href="{{ '/' | relative_url }}">{{ site.title }}</a><span aria-hidden="true">/</span>{{ page.title }}</p>
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="page-desc">{{ page.description }}</p>{% endif %}
+    </div>
+  </div>
+  {%- comment -%}
+    下層ページは左に目次を固定する。ページの一覧はここに直接書き、「このページの内容」は
+    assets/js/site.js が本文の見出しから作る（JavaScript が無ければページの一覧だけが出る）。
+  {%- endcomment %}
+  <div class="wrap page-grid">
+    <aside class="sidebar">
+      <details class="side-menu" open>
+        <summary>目次</summary>
+        <nav class="side-nav" aria-label="ページ">
+          <p class="side-h">ページ</p>
+          <a href="{{ '/' | relative_url }}">製品の説明</a>
+          <a href="{{ '/ime-off.html' | relative_url }}"{% if page.url == "/ime-off.html" %} aria-current="page"{% endif %}>ローマ字を直す方法</a>
+          <a href="{{ '/troubleshooting.html' | relative_url }}"{% if page.url == "/troubleshooting.html" %} aria-current="page"{% endif %}>トラブルシューティング</a>
+          <a href="{{ '/privacy.html' | relative_url }}"{% if page.url == "/privacy.html" %} aria-current="page"{% endif %}>プライバシーポリシー</a>
+          <a href="mailto:{{ site.email }}">お問い合わせ</a>
+        </nav>
+        <nav class="side-toc" aria-label="このページの内容" hidden>
+          <p class="side-h">このページの内容</p>
+          <ol></ol>
+        </nav>
+      </details>
+    </aside>
+    <div class="prose">
+{{ content }}
+    </div>
   </div>
 {% endif %}
-
-<div class="wrap prose">
-{{ content }}
-</div>
 </main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="34" height="34">
+        <span class="brand-name">{{ site.title }}</span>
+      </a>
+      <p>{{ site.tagline }}</p>
+      <a class="btn btn-ghost" href="{{ site.store_url }}?cid=site_footer">Microsoft Store で見る</a>
+    </div>
+    <nav class="footer-nav" aria-label="フッター">
+      <div>
+        <p class="footer-h">製品</p>
+        <a href="{{ '/#howto' | relative_url }}">使い方</a>
+        <a href="{{ '/#can' | relative_url }}">できること</a>
+        <a href="{{ '/#limits' | relative_url }}">できないこと</a>
+        <a href="{{ '/#pricing' | relative_url }}">価格と動作環境</a>
+        <a href="{{ '/#changelog' | relative_url }}">変更履歴</a>
+      </div>
+      <div>
+        <p class="footer-h">サポート</p>
+        <a href="{{ '/ime-off.html' | relative_url }}">ローマ字を直す方法</a>
+        <a href="{{ '/troubleshooting.html' | relative_url }}">トラブルシューティング</a>
+        <a href="{{ '/#faq' | relative_url }}">よくある質問</a>
+        <a href="mailto:{{ site.email }}">お問い合わせ</a>
+      </div>
+      <div>
+        <p class="footer-h">情報</p>
+        <a href="{{ '/privacy.html' | relative_url }}">プライバシーポリシー</a>
+        <a href="{{ '/#data' | relative_url }}">情報の取り扱い</a>
+        <a href="{{ site.store_url }}?cid=site_footer">Microsoft Store</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© {{ site.publisher }} · バージョン {{ site.app_version }}</p>
+  </div>
+</footer>
 
 </body>
 </html>
