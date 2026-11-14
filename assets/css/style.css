@@ -662,6 +662,8 @@ tbody tr:last-child td { border-bottom: 0; }
   .sidebar { position: static; max-height: none; padding: .4rem .9rem; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface-2); }
   .side-menu > summary { display: block; cursor: pointer; font-weight: 700; padding: .2rem 0; }
   .side-menu[open] > summary { margin-bottom: .5rem; }
+  /* 目次が本文の上に畳まれる幅は指で押すことが多いので、リンクの行間を広げる */
+  .side-nav a, .side-toc a { padding-top: .5rem; padding-bottom: .5rem; }
 }
 
 @media (max-width: 48rem) {
@@ -674,11 +676,12 @@ tbody tr:last-child td { border-bottom: 0; }
     overflow-x: auto;
     scrollbar-width: none;
   }
-  .site-nav a:nth-child(n) { display: inline-block; }
+  .site-nav a:nth-child(n) { display: inline-block; padding-top: .45rem; padding-bottom: .45rem; }
   .header-cta { margin-left: auto; }
   .kicker { display: block; margin-right: 0; }
   .steps, .features, .limits, .data-grid, .shots, .settings-list { grid-template-columns: minmax(0, 1fr); }
   .env-list > div { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .footer-nav { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .footer-nav a { padding: .4rem 0; }
   .prose table { display: block; overflow-x: auto; }
 }
