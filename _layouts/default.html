@@ -135,7 +135,7 @@
       "installUrl": {{ site.store_url | jsonify }},
       "sameAs": [{{ site.store_url | jsonify }}],
       "softwareHelp": {{ '/troubleshooting.html' | absolute_url | jsonify }},
-      "releaseNotes": "v1.2.3: ファイルやフォルダの名前を変更しているときに使えなかった問題を修正し、内部の安定性を改善しました。",
+      "releaseNotes": "v1.3.0: 候補の一覧が出る検索欄（Wikipedia・Google など）、Word の Web 版、LibreOffice で使えないことがある問題を修正し、読み取る範囲をローマ字の始まりまでにしました。コマンド プロンプトや Windows Terminal などの端末では働かないようにしました。",
       "publisher": { "@id": "{{ '/' | absolute_url }}#publisher" },
       "isAccessibleForFree": false,
       "offers": {
@@ -249,7 +249,7 @@
     </nav>
   </div>
   <div class="wrap footer-bottom">
-    <p>© {{ site.publisher }} · バージョン {{ site.app_version }}</p>
+    <p><span>© {{ site.publisher }}</span><span>バージョン {{ site.app_version }}</span><span>お問い合わせ: <a href="mailto:{{ site.email }}">{{ site.email }}</a></span></p>
   </div>
 </footer>
 

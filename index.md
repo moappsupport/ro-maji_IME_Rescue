@@ -3,7 +3,7 @@ title: IME オフで打ったローマ字を日本語に変換
 description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows アプリ。英語配列では右Ctrl キーで使えます。API などの大文字は残ります。30日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
 # description では Liquid が使えないので、体験日数（_config.yml の trial_days）を直接書いている。
-updated: 2026-10-10
+updated: 2026-11-14
 ---
 
 <section class="hero">
@@ -27,7 +27,6 @@ updated: 2026-10-10
       <div class="window">
         <div class="window-bar" aria-hidden="true">
           <span class="window-title">メモ帳</span>
-          <span class="window-ctrl"><i></i><i></i><i></i></span>
         </div>
         <div class="window-body">
           <p class="pair-head"><span class="is-before">IME オフのまま打ってしまった</span><span class="is-after">変換キーを押すと</span></p>
@@ -98,34 +97,28 @@ updated: 2026-10-10
     </div>
     <ul class="features">
       <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M4 12h16M4 17h7"/><path d="M18 15v6"/></svg>
         <h3>区切りまでまとめて変換</h3>
         <p>カーソル直前から続く<b>半角の英数字・記号</b>をまとめて変換します。半角スペースや日本語など、それ以外の文字が現れた時点で止まります。画面端での折り返しは影響しません。Enter を押していなければ、数行に見えていても 1 行として扱います。</p>
       </li>
       <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 10 5l5 14M7 14h6"/><path d="M17 9h4M19 7v4"/></svg>
         <h3>大文字の英単語は残ります</h3>
         <p><code>API</code> <code>HTML</code> のような略語は元の表記のまま残ります。<b>「A社」「B案」のような 1 文字だけの大文字も残ります。</b></p>
         <p class="ex"><span class="ex-in">kyouhaHTMLwobenkyou</span><span class="ex-out">今日はHTMLを勉強</span></p>
       </li>
       <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 14h6"/></svg>
         <h3>ファイル名の変更にも</h3>
         <p>エクスプローラーやデスクトップで、ファイルやフォルダの名前を変更している入力欄でも使えます（v1.2.3 から）。</p>
         <p class="ex"><span class="ex-in">kaigisiryou</span><span class="ex-out">会議資料</span></p>
       </li>
       <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M8 14h8"/></svg>
         <h3>普段の入力を邪魔しません</h3>
         <p>IME がオンのときは、そのキー本来の動作をそのまま行います。覚えるショートカットはありません。</p>
       </li>
       <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
         <h3>失敗したら消さずに止まります</h3>
         <p>読み取りや選択の確認に失敗した場合は、文字を消さずに中断します。処理中にクリックすれば、その場で中止できます。</p>
       </li>
       <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><path d="M3 3l18 18"/></svg>
         <h3>通信しません</h3>
         <p>ネットワーク通信を一切行わず、広告・解析・トラッキングも含みません。.NET のインストールや管理者権限も不要です。</p>
       </li>
@@ -142,16 +135,16 @@ updated: 2026-10-10
     <div class="settings">
       <figure class="settings-shot">
         <button type="button" class="shot-zoom" aria-label="設定画面を拡大して表示" onclick="document.getElementById('settings-zoom').showModal()">
-          <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="560" height="1018" loading="lazy">
+          <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="ro-maji IME Rescue の設定画面。トリガーキー・取得範囲・動作の速さ（プリセットと待機時間の一覧）・クリップボード・スタートアップの各項目" width="560" height="1033" loading="lazy">
           <span class="zoom-hint">クリックで拡大</span>
         </button>
       </figure>
       <dialog id="settings-zoom" class="zoom" aria-label="設定画面（拡大）" onclick="this.close()">
-        <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="" width="560" height="1018" loading="lazy">
+        <img src="{{ '/assets/img/settings.png' | relative_url }}" alt="" width="560" height="1033" loading="lazy">
       </dialog>
       <dl class="settings-list">
-        <div><dt>トリガーキー</dt><dd>変換キー（既定）か右Ctrl キーを選びます。英語配列（US / ANSI）のキーボードには変換キーが無いため、右Ctrl キーをお使いください。</dd></div>
-        <div><dt>取得範囲</dt><dd>カーソルからどこまで遡って読み取るかを選びます。行頭まで／直前2行まで／文書先頭まで（既定）。「行頭まで」は画面の折り返しで途中までしか取れないアプリがあるため、既定は最も確実な「文書先頭まで」です。広く取っても<b>変換される範囲は変わりません</b>。</dd></div>
+        <div><dt>トリガーキー</dt><dd>変換キー（既定）か右Ctrl キーを選びます。英語配列（US / ANSI）のキーボードには変換キーが無いため、右Ctrl キーをお使いください。変換キーを IME のオン・オフの切り替えに使っている場合も、右Ctrl キーをお使いください。</dd></div>
+        <div><dt>取得範囲</dt><dd>ローマ字が行頭まで続いているとき、何行前まで遡って読み取るかを選びます。行頭まで／直前2行まで／上限なし（既定）。どれもローマ字の始まりで止まるので、それより前の文章は読み取りません。上限を置くと、画面の端で折り返した長いローマ字の先頭側が変換されずに残ることがあります。</dd></div>
         <div><dt>動作の速さ</dt><dd>「安定重視／標準（既定）／最速」から選びます。変換に失敗する、途中で崩れるといった場合は「安定重視」にしてください。速いほど短く済みますが、対象のアプリが追いつかずに失敗しやすくなります。</dd></div>
         <div><dt>待機時間と上限</dt><dd>速さの設定で決まる値が一覧で見えます。個別に変えると「カスタム」になります。<b>キーボード保護の上限</b>（既定 30 秒）を超えると、キーを押して処理を中止できます。<b>選択確認の上限</b>（既定 5 秒）は、打ち直す文字を選び直せたかの確認を諦めるまでの時間です。</dd></div>
         <div><dt>クリップボード</dt><dd>処理中に上書きされる内容の扱いを選びます。そのまま保持する（既定）／元の内容を復元する／空にする。<b>既定のままなら、誤変換や中断のときに <code>Ctrl+V</code> で元のローマ字へ戻せます。</b></dd></div>
@@ -211,12 +204,23 @@ PDFwoexportshimasu  → PDFを得x歩rtします</code></pre>
         </div>
         <p>どの設定でも、入力していたアプリの「元に戻す」（<code>Ctrl+Z</code>）で戻せる場合があります。</p>
       </article>
+      <article class="limit">
+        <h3>Excel や Calc でセルに打った直後は変換されません</h3>
+        <p><b>セルに直接打っている最中は使えません。</b>この状態では ← や Home キーがセルの移動になり、打った文字を選択して読み取れないためです。セルをダブルクリックするか <code>F2</code> キーを押して編集状態にしてから、変換キーを押してください（<a href="{{ '/troubleshooting.html#spreadsheet-cell-entry' | relative_url }}">詳しく</a>）。</p>
+      </article>
+      <article class="limit">
+        <h3>コマンド プロンプトや Windows Terminal では働きません</h3>
+        <p>端末のウィンドウ（コマンド プロンプト、PowerShell、Windows Terminal、Git Bash など）では、起動用のキーを押しても本アプリは何もしません（v1.3.0 から）。文字の読み取りに使う <code>Ctrl+C</code> が、端末では実行中のコマンドを中断する操作になるためです。</p>
+        <p><b>エディタなどに組み込まれた端末（Visual Studio Code の内蔵ターミナルなど）は見分けられません。</b>実行中のコマンドが中断されることがあるので、そこでは起動用のキーを押さないでください（<a href="{{ '/troubleshooting.html#terminal-windows' | relative_url }}">詳しく</a>）。</p>
+      </article>
       <article class="limit is-wide is-plain">
         <h3>その他</h3>
         <ul>
           <li>すべてのアプリで動作するわけではありません。対象アプリのコピー操作、選択操作、IME 制御の挙動に依存します。</li>
           <li>パスワード欄など、内容を知られたくない入力欄では使用しないでください。</li>
           <li>対象のアプリが管理者権限で動作している場合、Windows の仕組み（UIPI）により操作できません。</li>
+          <li>クリップボードを他のアプリが使用している間は、処理を中断します（クリップボード履歴ツール、リモートデスクトップや仮想化ソフトのクリップボード共有など。<a href="{{ '/troubleshooting.html#clipboard-error' | relative_url }}">詳しく</a>）。</li>
+          <li>半角スペースや日本語の直後、行頭にカーソルがあるときは、変換できる文字が無いため本アプリは何もしません（通知も出ません）。</li>
         </ul>
         <p>症状ごとの切り分け手順は<a href="{{ '/troubleshooting.html' | relative_url }}">トラブルシューティング</a>にまとめています。</p>
       </article>
@@ -302,6 +306,7 @@ PDFwoexportshimasu  → PDFを得x歩rtします</code></pre>
       <h2><span class="kicker">変更履歴</span> バージョンごとの主な変更</h2>
     </div>
     <ol class="timeline">
+      <li><h3>v1.3.0</h3><ul><li>候補の一覧が出る検索欄（Wikipedia・Google など）、Word の Web 版、LibreOffice（Writer、Calc のセル編集中）でうまく使えなかった問題を修正</li><li>コマンド プロンプトや Windows Terminal などの端末では働かないように変更（実行中のコマンドを中断させないため）</li><li>読み取る範囲をローマ字の始まりまでに変更</li><li>トレイメニューからログを開けないことがある問題と、通知の文が途中で切れる問題を修正</li></ul></li>
       <li><h3>v1.2.3</h3><ul><li>ファイルやフォルダの名前を変更しているときに使えなかった問題を修正</li><li>内部の安定性を改善</li></ul></li>
       <li><h3>v1.2.2</h3><ul><li>処理中の中止やクリップボードの扱いなどの不具合を修正</li></ul></li>
       <li><h3>v1.2.1</h3><ul><li>内部の安定性を改善</li></ul></li>
@@ -320,22 +325,6 @@ PDFwoexportshimasu  → PDFを得x歩rtします</code></pre>
       <p>体験後は {{ site.price_jpy }} 円の買い切り。Windows の PC 用アプリです。</p>
     </div>
     <a class="btn btn-light btn-lg" href="{{ site.store_url }}?cid=site_bottom">Microsoft Store で無料で試す</a>
-  </div>
-</section>
-
-<section class="block" id="feedback">
-  <div class="wrap narrow">
-    <div class="sec-head">
-      <h2><span class="kicker">ご意見・不具合のご報告</span> うまく動かなかったアプリを教えてください</h2>
-    </div>
-    <p>うまく動かなかったアプリや、使ってみて良かった点をお聞かせください。<a href="mailto:{{ site.email }}">{{ site.email }}</a> で受け付けています。不具合のときは、次の情報があると原因を絞り込めます。</p>
-    <ul class="checklist">
-      <li>使っていたアプリ（例: メモ帳、ブラウザーと Web サイトの名前）</li>
-      <li>日本語 IME（Microsoft IME / Google 日本語入力 など）</li>
-      <li>本アプリのバージョン（設定画面のタイトルに表示されます）</li>
-      <li>起きたこと（通知が出た場合はその文言）</li>
-    </ul>
-    <p>入力していた文章そのものを送っていただく必要はありません。症状ごとの対処は<a href="{{ '/troubleshooting.html' | relative_url }}">トラブルシューティング</a>にもまとめています。</p>
   </div>
 </section>
 
