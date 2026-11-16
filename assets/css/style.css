@@ -7,17 +7,17 @@
    2026-11 に簡素にした（N24）: 影・グラデーション・カードの枠をやめ、余白を詰める。
    文字は 16px を基準にし、小さい注記でも 14px を下回らせない。本文より薄い文字色も地との比 6:1 以上（2026-11-16、読みやすさの見直し）。
    区切りは見出しの下線と細い罫線だけ。枠で囲むのは、画面の見本・価格・表・コードだけ。
-   色は彩度を落とした緑と青を半々に使う（2026-11-16）。緑 = 主なボタン・手順の番号・チェック・ローマ字の例、
-   青 = リンク・見出しの強調・選択中の項目・最後の帯。地は真っ白と真っ黒を避け、文字との比は本文 4.5:1 以上を保つ。
-   アイコン・画像・録画は元の濃い緑と青のまま（色を合わせに行かない）。
+   緑と青はアイコンの色（#008304・#0014bb）をそのまま、半々に使う（2026-11-17）。緑 = 主なボタン・手順の番号・
+   チェック・ローマ字の例、青 = リンク・見出しの強調・選択中の項目・最後の帯。暗色では同じ色相の明るい色にする
+   （ボタンと帯の地はアイコンの色のまま）。地は真っ白と真っ黒を避け、文字との比は本文 4.5:1 以上を保つ。
    ===================================================================== */
 :root {
   color-scheme: light;
 
-  --blue:        #2a5ea8;
-  --blue-soft:   #e8f0fa;
-  --green:       #3c9a6c;
-  --green-text:  #1f7049;
+  --blue:        #0014bb;
+  --blue-soft:   #eef0ff;
+  --green:       #008304;
+  --green-text:  #006b03;
 
   --bg:          #fbfcfb;
   --bg-alt:      #f1f6f4;
@@ -27,15 +27,15 @@
   --fg-3:        #4e5d67;
   --line:        #dde6e3;
   --line-2:      #bccac7;
-  --link:        #2a5ea8;
+  --link:        #0014bb;
 
-  --btn-bg:      #237a50;
-  --btn-bg-h:    #1c6a44;
+  --btn-bg:      #008304;
+  --btn-bg-h:    #006b03;
   --btn-fg:      #ffffff;
 
   /* 最後の帯（青地に白い文字）と、その中の白いボタン */
-  --band-bg:     #2a5ea8;
-  --band-soft:   #e8f0fa;
+  --band-bg:     #0014bb;
+  --band-soft:   #eef0ff;
 
   --r: 6px;
 
@@ -46,10 +46,10 @@
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --blue:        #8cb6f0;
-    --blue-soft:   #1c2e47;
-    --green:       #5cbf93;
-    --green-text:  #7bcfa6;
+    --blue:        #8c99ff;
+    --blue-soft:   #1a2152;
+    --green:       #4cc35a;
+    --green-text:  #6fd27b;
 
     --bg:          #11181b;
     --bg-alt:      #161f22;
@@ -59,12 +59,12 @@
     --fg-3:        #a0aeac;
     --line:        #27363a;
     --line-2:      #3c4f54;
-    --link:        #8cb6f0;
+    --link:        #9aa6ff;
 
-    --btn-bg:      #277b52;
-    --btn-bg-h:    #2c8358;
+    --btn-bg:      #008304;
+    --btn-bg-h:    #006b03;
 
-    --band-bg:     #254a82;
+    --band-bg:     #0014bb;
   }
 }
 
@@ -140,7 +140,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 .btn-block { display: flex; width: 100%; }
 .btn-ghost { border: 1px solid var(--line-2); color: var(--fg); background: var(--bg); }
 .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
-.btn-light { background: #fff; color: #2a5ea8; }
+.btn-light { background: #fff; color: #0014bb; }
 .btn-light:hover { background: var(--band-soft); }
 
 /* ---------- ヘッダー ---------- */
@@ -319,7 +319,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   place-items: center;
   width: 1.6rem; height: 1.6rem;
   border-radius: 50%;
-  background: var(--green-text);
+  background: var(--green);
   color: var(--bg);
   font-weight: 700;
   font-size: .95rem;

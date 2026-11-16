@@ -16,7 +16,7 @@ app_version: "1.3.0"
 publisher: "moapp"
 email: "moappsupport@gmail.com"
 og_image: "/assets/img/og.png?v=3"
-theme_color: "#2a5ea8"
+theme_color: "#0014bb"
 
 # 製品名の読み方。トップの製品名の下と、構造化データの alternateName に出す。
 # Store には読み方を入れる欄（並べ替えタイトル）が無いので、ここだけで持つ。
