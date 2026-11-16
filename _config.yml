@@ -22,7 +22,8 @@ theme_color: "#0014bb"
 # Store には読み方を入れる欄（並べ替えタイトル）が無いので、ここだけで持つ。
 name_reading: "ローマ字 IME レスキュー"
 
-# Store に出ている製品名（STORE_LISTING.md の「製品名」と同じ）。構造化データの alternateName に出し、
+# Store に出ている製品名（STORE_LISTING.md の「製品名」と同じ）。アプリの正式名称として、トップの冒頭の製品名の行と
+# 価格の欄に出す（ヘッダー・フッター・本文中は短い title のまま）。構造化データの alternateName にも出し、
 # Store の製品ページと同じものだと検索エンジンや AI が結び付けられるようにする。
 store_title: "ro-maji IME Rescue ローマ字を日本語に変換するアプリ"
 

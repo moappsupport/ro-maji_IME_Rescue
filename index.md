@@ -9,7 +9,7 @@ updated: 2026-11-17
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><img src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="28" height="28"><span>{{ site.title }}</span><span class="eyebrow-reading">{{ site.name_reading }}</span></p>
+      <p class="eyebrow"><img src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="28" height="28"><span>{{ site.title }}</span> <span>{{ site.store_title | remove_first: site.title | strip }}</span> <span class="eyebrow-reading">{{ site.name_reading }}</span></p>
       <h1>IME オフで打ったローマ字を、<br><em>キーひとつ</em>で漢字変換まで。</h1>
       <p class="lead">{{ site.title }} は、IME をオフ（半角英数）にしたまま打ってしまったローマ字を、日本語に入力し直す Windows 用の常駐アプリです。カーソルを文字列の直後に置いて変換キーを押すだけ。範囲を選択しなくても、漢字の変換候補が出るところまで進みます。</p>
       <div class="hero-cta">
@@ -245,7 +245,7 @@ PDFwoexportshimasu  → PDFを得x歩rtします</code></pre>
     </div>
     <div class="pricing">
       <div class="price-card" id="info">
-        <p class="price-name">{{ site.title }}<span>{{ site.name_reading }}</span></p>
+        <p class="price-name">{{ site.store_title }}<span>{{ site.name_reading }}</span></p>
         <p class="price"><span class="price-num">{{ site.price_jpy }}</span><span class="price-unit">円</span><span class="price-term">買い切り</span></p>
         <p class="price-trial">{{ site.trial_days }}日間の無料体験版があります</p>
         <a class="btn btn-primary btn-block" href="{{ site.store_url }}?cid=site_info">Microsoft Store で入手</a>
