@@ -20,6 +20,7 @@ updated: 2026-11-17
         <li>範囲の選択は不要</li>
         <li>大文字（API・A社）はそのまま</li>
         <li>英語配列は右Ctrl キーで</li>
+        <li>Microsoft IME・Google 日本語入力で動作確認済み</li>
         <li>通信なし・広告なし</li>
       </ul>
     </div>
