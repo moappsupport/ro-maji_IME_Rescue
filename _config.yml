@@ -1,6 +1,6 @@
 title: ro-maji IME Rescue
 tagline: IME オフで打ったローマ字を、その場で日本語に
-description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ
+description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows 常駐アプリ。範囲の選択は不要で、漢字の変換候補まで出ます。大文字の英字はそのまま残ります
 lang: ja
 
 # canonical・OGP・sitemap の absolute_url が完全な URL を組み立てるために必要。

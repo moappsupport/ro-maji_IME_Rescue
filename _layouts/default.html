@@ -103,10 +103,10 @@
       "softwareVersion": {{ site.app_version | jsonify }},
       "softwareRequirements": "起動用のキーとして変換キー（日本語配列 106/109 キー）または右Ctrl キーが必要です。英語配列（US / ANSI）のキーボードでは右Ctrl キーを使用します。.NET のインストールと管理者権限は不要です。",
       "featureList": [
-        "IME をオフのまま打ったローマ字を、変換キーまたは右Ctrl キーを 1 回押すだけで日本語に入力し直す",
-        "範囲を選択する必要がなく、文字列の直後にカーソルを置いてキーを押すだけで使える",
+        "IME をオフのまま打ったローマ字を、変換キーまたは右Ctrl キーを 1 回押すだけで日本語に入力し直し、漢字の変換候補まで出す",
+        "範囲を選択する必要がなく、文字列の直後にカーソルを置いてキーを押すだけで使える（ローマ字の範囲は自動で選ぶ）",
+        "API・HTML のような略語も、「A社」「B案」のような 1 文字の大文字も、そのままの表記で残す",
         "エクスプローラーやデスクトップで、ファイルやフォルダの名前を変更しているときにも使える",
-        "大文字の英単語は、1 文字でもそのままの表記で残す",
         "英語配列（US / ANSI）のキーボードでは右Ctrl キーで使える",
         "IME がオンのときは、そのキー本来の動作をそのまま行う",
         "読み取りや選択の確認に失敗した場合は、文字を消さずに中断する",
@@ -163,8 +163,8 @@
       <span class="brand-name">{{ site.title }}</span>
     </a>
     <nav class="site-nav" aria-label="サイト内">
+      <a href="{{ '/#strengths' | relative_url }}">特長</a>
       <a href="{{ '/#howto' | relative_url }}">使い方</a>
-      <a href="{{ '/#can' | relative_url }}">できること</a>
       <a href="{{ '/#settings' | relative_url }}">設定</a>
       <a href="{{ '/#pricing' | relative_url }}">価格</a>
       <a href="{{ '/#faq' | relative_url }}">よくある質問</a>
@@ -227,6 +227,7 @@
     <nav class="footer-nav" aria-label="フッター">
       <div>
         <p class="footer-h">製品</p>
+        <a href="{{ '/#strengths' | relative_url }}">特長</a>
         <a href="{{ '/#howto' | relative_url }}">使い方</a>
         <a href="{{ '/#can' | relative_url }}">できること</a>
         <a href="{{ '/#limits' | relative_url }}">できないこと</a>

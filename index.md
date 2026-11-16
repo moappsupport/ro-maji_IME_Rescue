@@ -1,24 +1,25 @@
 ---
 title: IME オフで打ったローマ字を日本語に変換
-description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows アプリ。英語配列では右Ctrl キーで使えます。API などの大文字は残ります。30日間の無料体験版があります。
+description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows アプリ。範囲の選択は不要で、漢字の変換候補まで出ます。API などの大文字は残ります。英語配列は右Ctrl キー。30日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
 # description では Liquid が使えないので、体験日数（_config.yml の trial_days）を直接書いている。
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="eyebrow"><img src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="28" height="28"><span>{{ site.title }}</span><span class="eyebrow-reading">{{ site.name_reading }}</span></p>
-      <h1>IME オフで打ったローマ字を、<br><em>変換キーひとつ</em>で日本語に。</h1>
-      <p class="lead">{{ site.title }} は、IME をオフ（半角英数）にしたまま打ってしまったローマ字を、日本語に入力し直す Windows 用の常駐アプリです。カーソルを文字列の直後に置いて変換キーを押すだけで、範囲を選択する必要はありません。</p>
+      <h1>IME オフで打ったローマ字を、<br><em>キーひとつ</em>で漢字変換まで。</h1>
+      <p class="lead">{{ site.title }} は、IME をオフ（半角英数）にしたまま打ってしまったローマ字を、日本語に入力し直す Windows 用の常駐アプリです。カーソルを文字列の直後に置いて変換キーを押すだけ。範囲を選択しなくても、漢字の変換候補が出るところまで進みます。</p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-lg" href="{{ site.store_url }}?cid=site_hero">Microsoft Store で無料で試す</a>
         <p class="cta-note"><b>{{ site.trial_days }}日間の無料体験版</b>があります。体験後は {{ site.price_jpy }} 円の買い切りです。<br>ご購入の前に<a href="{{ '/#env' | relative_url }}">動作環境</a>と<a href="{{ '/#limits' | relative_url }}">できないこと</a>をご確認ください。</p>
       </div>
       <ul class="trust">
-        <li>Windows 10 / 11</li>
-        <li>Microsoft IME・Google 日本語入力で動作確認済み</li>
+        <li>範囲の選択は不要</li>
+        <li>大文字（API・A社）はそのまま</li>
+        <li>英語配列は右Ctrl キーで</li>
         <li>通信なし・広告なし</li>
       </ul>
     </div>
@@ -37,6 +38,32 @@ updated: 2026-11-16
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="block alt" id="strengths">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span class="kicker">特長</span> 範囲の選択も、打ち直しも要りません</h2>
+    </div>
+    <ul class="features">
+      <li>
+        <h3>範囲を選択する必要がありません</h3>
+        <p>文字列のすぐ後ろにカーソルを置くだけです。カーソル直前から続く<b>半角の英数字・記号を、自動で選びます。</b>半角スペースや日本語など、それ以外の文字が現れた時点で止まります。画面端での折り返しは影響しません。Enter を押していなければ、数行に見えていても 1 行として扱います。</p>
+        <p class="ex"><span class="ex-in">資料をkakuninsimasu</span><span class="ex-out">資料を確認します</span></p>
+      </li>
+      <li>
+        <h3>キーひとつで漢字変換まで進みます</h3>
+        <p>日本語で入力し直して、<b>変換候補を出すところまでを 1 回のキーで行います。</b>変換にはお使いの IME をそのまま使うので、あとはいつもどおり候補を選んで確定するだけです。</p>
+        <p class="ex"><span class="ex-in">kyouhaiitenkidesu</span><span class="ex-out">今日はいい天気です</span></p>
+      </li>
+      <li>
+        <h3>大文字のアルファベットは残ります</h3>
+        <p><code>API</code> <code>HTML</code> のような略語は元の表記のまま残ります。<b>「A社」「B案」のような 1 文字だけの大文字も残ります。</b></p>
+        <p class="ex"><span class="ex-in">kyouhaHTMLwobenkyou</span><span class="ex-out">今日はHTMLを勉強</span></p>
+        <p class="ex"><span class="ex-in">Ashanoteian</span><span class="ex-out">A社の提案</span></p>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -88,18 +115,9 @@ updated: 2026-11-16
 <section class="block" id="can">
   <div class="wrap">
     <div class="sec-head">
-      <h2><span class="kicker">できること</span> 打ち直さずに、その場で日本語へ</h2>
+      <h2><span class="kicker">できること</span> ほかにも、次のように使えます</h2>
     </div>
     <ul class="features">
-      <li>
-        <h3>区切りまでまとめて変換</h3>
-        <p>カーソル直前から続く<b>半角の英数字・記号</b>をまとめて変換します。半角スペースや日本語など、それ以外の文字が現れた時点で止まります。画面端での折り返しは影響しません。Enter を押していなければ、数行に見えていても 1 行として扱います。</p>
-      </li>
-      <li>
-        <h3>大文字の英単語は残ります</h3>
-        <p><code>API</code> <code>HTML</code> のような略語は元の表記のまま残ります。<b>「A社」「B案」のような 1 文字だけの大文字も残ります。</b></p>
-        <p class="ex"><span class="ex-in">kyouhaHTMLwobenkyou</span><span class="ex-out">今日はHTMLを勉強</span></p>
-      </li>
       <li>
         <h3>ファイル名の変更にも</h3>
         <p>エクスプローラーやデスクトップで、ファイルやフォルダの名前を変更している入力欄でも使えます（v1.2.3 から）。</p>
@@ -112,10 +130,6 @@ updated: 2026-11-16
       <li>
         <h3>失敗したら消さずに止まります</h3>
         <p>読み取りや選択の確認に失敗した場合は、文字を消さずに中断します。処理中にクリックすれば、その場で中止できます。</p>
-      </li>
-      <li>
-        <h3>通信しません</h3>
-        <p>ネットワーク通信を一切行わず、広告・解析・トラッキングも含みません。.NET のインストールや管理者権限も不要です。</p>
       </li>
     </ul>
   </div>
