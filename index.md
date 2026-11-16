@@ -3,7 +3,7 @@ title: IME オフで打ったローマ字を日本語に変換
 description: IME をオフ（半角英数）にしたまま打ってしまったローマ字を、変換キーひとつで日本語に入力し直す Windows アプリ。英語配列では右Ctrl キーで使えます。API などの大文字は残ります。30日間の無料体験版があります。
 # sitemap の lastmod と構造化データの dateModified に使う。内容を変えたら手で更新する。
 # description では Liquid が使えないので、体験日数（_config.yml の trial_days）を直接書いている。
-updated: 2026-11-14
+updated: 2026-11-16
 ---
 
 <section class="hero">
@@ -25,19 +25,14 @@ updated: 2026-11-14
 
     <div class="hero-demo">
       <div class="window">
-        <div class="window-bar" aria-hidden="true">
-          <span class="window-title">メモ帳</span>
+        <div class="window-bar">
+          <span class="window-title">実際の動作（録画・音声なし）</span>
+          <button type="button" class="demo-toggle" hidden>一時停止</button>
         </div>
-        <div class="window-body">
-          <p class="pair-head"><span class="is-before">IME オフのまま打ってしまった</span><span class="is-after">変換キーを押すと</span></p>
-          <dl class="pairs">
-            <div><dt>AsangaHTMLtoAPIwotantousuru</dt><dd><span class="seg is-focus">Aさんが</span><span class="seg">HTMLと</span><span class="seg">APIを</span><span class="seg">担当する</span></dd></div>
-            <div><dt>kyounotenkihaharedeatatakaidesu</dt><dd><span class="seg is-focus">今日の</span><span class="seg">天気は</span><span class="seg">晴れで</span><span class="seg">暖かいです</span></dd></div>
-            <div><dt>Bandeikimasu</dt><dd><span class="seg is-focus">B案で</span><span class="seg">行きます</span></dd></div>
-          </dl>
-        </div>
+        <video class="demo-video" width="720" height="282" autoplay muted loop playsinline preload="metadata" poster="{{ '/assets/img/demo-poster.png' | relative_url }}" aria-label="IME オフのまま打ったローマ字が、変換キーを押すと日本語に入力し直される様子の録画。行全体がローマ字の例、文の途中で大文字が混ざる例、折り返して 2 行になった例の 3 つ">
+          <source src="{{ '/assets/video/demo.mp4' | relative_url }}" type="video/mp4">
+        </video>
         <div class="window-foot">
-          <kbd class="keycap">変換</kbd>
           <p class="demo-status">カーソルを文字列の直後に置いて押すだけ。日本語で入力し直されて変換候補が出るので、いつもどおり確定します。</p>
         </div>
       </div>

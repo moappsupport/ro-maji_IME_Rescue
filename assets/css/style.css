@@ -227,9 +227,9 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 }
 .trust li::before { content: "✓"; margin-right: .3rem; color: var(--green-text); font-weight: 700; }
 
-/* ---------- 変換の例 ----------
-   打ってしまったローマ字（緑・等幅）と、変換キーを押した後（文節に下線）を組にして並べる。
-   動かさず、すべての例を最初から見せる。 */
+/* ---------- 実際の動作の録画 ----------
+   枠の中は録画（自動再生・ループ・無音。tools/demo で作る）。枠の上の帯に一時停止のボタン、下の帯に使い方の一言。
+   「動きを減らす」が有効な環境では自動再生せず、表紙の画像と「再生」のボタンを出す（site.js）。 */
 .window {
   border: 1px solid var(--line-2);
   border-radius: var(--r);
@@ -237,38 +237,30 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   overflow: hidden;
 }
 .window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  min-height: 1.9rem;
   padding: .2rem .9rem;
   background: var(--surface-2);
   border-bottom: 1px solid var(--line);
   font-size: .8rem;
   color: var(--fg-3);
 }
-.window-body { padding: .75rem .9rem .85rem; }
-.pair-head {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .2rem 1.1rem;
-  margin: 0 0 .55rem;
-  font-size: .8rem;
-  font-weight: 700;
+/* 録画は白地なので、暗色でも背景は白のまま（読み込み前に枠の色が見えないように） */
+.demo-video { display: block; width: 100%; height: auto; background: #fff; cursor: pointer; }
+.demo-toggle {
+  flex: none;
+  padding: .1rem .7rem;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  background: var(--bg);
+  font: inherit;
+  color: var(--fg-2);
+  cursor: pointer;
 }
-.pair-head span { display: inline-flex; align-items: center; gap: .35rem; }
-.pair-head span::before { content: ""; width: .6rem; height: .6rem; border-radius: 2px; }
-.pair-head .is-before { color: var(--green-text); }
-.pair-head .is-before::before { background: var(--green); }
-.pair-head .is-after { color: var(--blue); }
-.pair-head .is-after::before { background: var(--blue); }
-
-.pairs { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: .55rem; }
-.pairs > div { padding-bottom: .55rem; border-bottom: 1px solid var(--line); }
-.pairs > div:last-child { padding-bottom: 0; border-bottom: 0; }
-.pairs dt { font-family: var(--mono); font-size: .93rem; color: var(--green-text); overflow-wrap: anywhere; }
-.pairs dd { margin: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.6; overflow-wrap: anywhere; }
-.pairs dd::before { content: "→ "; color: var(--blue); }
-
-/* 変換中の文節: 細い下線、注目文節は太い下線（Windows の IME の表示に倣う） */
-.seg { box-shadow: inset 0 -1.5px 0 currentColor; margin-right: .18em; }
-.seg.is-focus { box-shadow: inset 0 -3px 0 var(--blue); background: var(--blue-soft); }
+.demo-toggle:hover { color: var(--fg); border-color: var(--fg-3); }
 
 .window-foot {
   display: flex;
@@ -277,16 +269,6 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   padding: .55rem .9rem;
   border-top: 1px solid var(--line);
   background: var(--surface-2);
-}
-.keycap {
-  flex: none;
-  padding: .3rem .7rem;
-  border: 1px solid var(--line-2);
-  border-bottom-width: 3px;
-  border-radius: var(--r);
-  background: var(--bg);
-  font: 700 .93rem/1.3 var(--font);
-  color: var(--fg);
 }
 .demo-status { margin: 0; font-size: .87rem; line-height: 1.6; color: var(--fg-2); }
 

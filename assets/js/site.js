@@ -55,3 +55,25 @@
   }, { rootMargin: '-10% 0px -70% 0px' });
   heads.forEach((h) => io.observe(h));
 })();
+
+// トップの録画に「一時停止 / 再生」のボタンを付ける（録画の上を押しても同じ）。
+// 「動きを減らす」が有効なら自動再生をやめ、表紙の画像のまま待つ。JavaScript が無ければ、ボタンは出ずに自動再生だけになる。
+(() => {
+  'use strict';
+  const video = document.querySelector('.demo-video');
+  const button = document.querySelector('.demo-toggle');
+  if (!video || !button) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.removeAttribute('autoplay');
+    video.load();   // 始まっていた再生を止めて、表紙の画像へ戻す
+  }
+  const sync = () => { button.textContent = video.paused ? '再生' : '一時停止'; };
+  const toggle = () => { if (video.paused) video.play(); else video.pause(); };
+  button.addEventListener('click', toggle);
+  video.addEventListener('click', toggle);
+  video.addEventListener('play', sync);
+  video.addEventListener('pause', sync);
+  button.hidden = false;
+  sync();
+})();
