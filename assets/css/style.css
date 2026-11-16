@@ -4,31 +4,38 @@
    アイコンの二色（緑 = 打ってしまったローマ字、青 = 日本語）を機能の説明として使う。
    明暗の両方に対応する。色はすべてここのトークンから取る。
    トップは製品ページ、下層ページは左に目次を固定した文書の形（2026-10 の作り直し、plan/main.md の N18）。
-   2026-11 に簡素にした（N24）: 影・グラデーション・カードの枠をやめ、文字と余白を詰めて 1 画面の情報量を増やす。
+   2026-11 に簡素にした（N24）: 影・グラデーション・カードの枠をやめ、余白を詰める。
+   文字は 16px を基準にし、小さい注記でも 14px を下回らせない。本文より薄い文字色も地との比 6:1 以上（2026-11-16、読みやすさの見直し）。
    区切りは見出しの下線と細い罫線だけ。枠で囲むのは、画面の見本・価格・表・コードだけ。
-   動く見せ方（自動のデモ・スライダー）は使わず、例はすべて最初から表示する。
+   色は彩度を落とした緑と青を半々に使う（2026-11-16）。緑 = 主なボタン・手順の番号・チェック・ローマ字の例、
+   青 = リンク・見出しの強調・選択中の項目・最後の帯。地は真っ白と真っ黒を避け、文字との比は本文 4.5:1 以上を保つ。
+   アイコン・画像・録画は元の濃い緑と青のまま（色を合わせに行かない）。
    ===================================================================== */
 :root {
   color-scheme: light;
 
-  --blue:        #0014bb;
-  --blue-soft:   #eef0ff;
-  --green:       #008304;
-  --green-text:  #006b03;
+  --blue:        #2a5ea8;
+  --blue-soft:   #e8f0fa;
+  --green:       #3c9a6c;
+  --green-text:  #1f7049;
 
-  --bg:          #ffffff;
-  --bg-alt:      #f6f7fa;
-  --surface-2:   #f6f7fa;
-  --fg:          #0f1222;
-  --fg-2:        #3f445a;
-  --fg-3:        #666c85;
-  --line:        #e1e4ec;
-  --line-2:      #c5cad8;
-  --link:        #0014bb;
+  --bg:          #fbfcfb;
+  --bg-alt:      #f1f6f4;
+  --surface-2:   #f1f6f4;
+  --fg:          #17232b;
+  --fg-2:        #33424c;
+  --fg-3:        #4e5d67;
+  --line:        #dde6e3;
+  --line-2:      #bccac7;
+  --link:        #2a5ea8;
 
-  --btn-bg:      #0014bb;
-  --btn-bg-h:    #0010a0;
+  --btn-bg:      #237a50;
+  --btn-bg-h:    #1c6a44;
   --btn-fg:      #ffffff;
+
+  /* 最後の帯（青地に白い文字）と、その中の白いボタン */
+  --band-bg:     #2a5ea8;
+  --band-soft:   #e8f0fa;
 
   --r: 6px;
 
@@ -39,31 +46,33 @@
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --blue:        #8c99ff;
-    --blue-soft:   #1a2152;
-    --green:       #4cc35a;
-    --green-text:  #6fd27b;
+    --blue:        #8cb6f0;
+    --blue-soft:   #1c2e47;
+    --green:       #5cbf93;
+    --green-text:  #7bcfa6;
 
-    --bg:          #0d1020;
-    --bg-alt:      #131730;
-    --surface-2:   #171c38;
-    --fg:          #eef0fa;
-    --fg-2:        #c0c5db;
-    --fg-3:        #9298b5;
-    --line:        #262d4e;
-    --line-2:      #3a4370;
-    --link:        #9aa6ff;
+    --bg:          #11181b;
+    --bg-alt:      #161f22;
+    --surface-2:   #1b2529;
+    --fg:          #e8efed;
+    --fg-2:        #c6d1cf;
+    --fg-3:        #a0aeac;
+    --line:        #27363a;
+    --line-2:      #3c4f54;
+    --link:        #8cb6f0;
 
-    --btn-bg:      #2a3ff0;
-    --btn-bg-h:    #3a4ef5;
+    --btn-bg:      #277b52;
+    --btn-bg-h:    #2c8358;
+
+    --band-bg:     #254a82;
   }
 }
 
 /* ---------- 基本 ----------
-   文字の基準は 15px 相当（利用者がブラウザーで変えた文字サイズに追従するよう、px ではなく割合で指定する）。
+   文字の基準はブラウザーの既定（16px 相当）（利用者がブラウザーで変えた文字サイズに追従するよう、px ではなく割合で指定する）。
    以下の rem はこの基準に対する値。メディアクエリの rem はブラウザーの既定（16px）で決まる。 */
 *, *::before, *::after { box-sizing: border-box; }
-html { font-size: 93.75%; -webkit-text-size-adjust: 100%; scroll-padding-top: 4.5rem; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 4.5rem; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
 body {
@@ -84,7 +93,7 @@ b, strong { font-weight: 700; }
 
 code {
   font-family: var(--mono);
-  font-size: .9em;
+  font-size: .95em;
   padding: .05em .3em;
   border-radius: 4px;
   background: var(--surface-2);
@@ -97,7 +106,7 @@ pre {
   border-radius: var(--r);
   background: var(--surface-2);
   border: 1px solid var(--line);
-  font-size: .87rem;
+  font-size: .9rem;
   line-height: 1.6;
 }
 pre code { padding: 0; border: 0; background: none; font-size: inherit; }
@@ -131,8 +140,8 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 .btn-block { display: flex; width: 100%; }
 .btn-ghost { border: 1px solid var(--line-2); color: var(--fg); background: var(--bg); }
 .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
-.btn-light { background: #fff; color: #0014bb; }
-.btn-light:hover { background: #eef0ff; }
+.btn-light { background: #fff; color: #2a5ea8; }
+.btn-light:hover { background: var(--band-soft); }
 
 /* ---------- ヘッダー ---------- */
 .site-header {
@@ -159,7 +168,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 }
 .brand img { width: 1.75rem; height: 1.75rem; border-radius: 6px; display: block; }
 
-.site-nav { display: flex; gap: .1rem; margin-left: auto; font-size: .93rem; }
+.site-nav { display: flex; gap: .1rem; margin-left: auto; font-size: .95rem; }
 .site-nav a {
   padding: .3rem .6rem;
   border-radius: var(--r);
@@ -176,7 +185,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   background: var(--btn-bg);
   color: var(--btn-fg);
   font-weight: 700;
-  font-size: .93rem;
+  font-size: .95rem;
   text-decoration: none;
 }
 .header-cta:hover { background: var(--btn-bg-h); }
@@ -196,11 +205,11 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   flex-wrap: wrap;
   gap: .45rem;
   margin: 0 0 .6rem;
-  font-size: .93rem;
+  font-size: .95rem;
   font-weight: 700;
 }
 .eyebrow img { width: 1.4rem; height: 1.4rem; border-radius: 5px; display: block; }
-.eyebrow-reading { font-weight: 400; color: var(--fg-3); font-size: .87rem; }
+.eyebrow-reading { font-weight: 400; color: var(--fg-3); font-size: .9rem; }
 
 .hero h1 {
   margin: 0;
@@ -212,7 +221,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 .hero h1 em { font-style: normal; color: var(--blue); }
 .lead { margin: .8rem 0 0; color: var(--fg-2); }
 .hero-cta { margin-top: 1.1rem; }
-.cta-note { margin: .6rem 0 0; font-size: .87rem; color: var(--fg-3); line-height: 1.65; }
+.cta-note { margin: .6rem 0 0; font-size: .9rem; color: var(--fg-3); line-height: 1.65; }
 .cta-note b { color: var(--fg); }
 
 .trust {
@@ -222,7 +231,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   margin: .8rem 0 0;
   padding: 0;
   list-style: none;
-  font-size: .87rem;
+  font-size: .9rem;
   color: var(--fg-2);
 }
 .trust li::before { content: "✓"; margin-right: .3rem; color: var(--green-text); font-weight: 700; }
@@ -245,11 +254,11 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   padding: .2rem .9rem;
   background: var(--surface-2);
   border-bottom: 1px solid var(--line);
-  font-size: .8rem;
+  font-size: .875rem;
   color: var(--fg-3);
 }
-/* 録画は白地なので、暗色でも背景は白のまま（読み込み前に枠の色が見えないように） */
-.demo-video { display: block; width: 100%; height: auto; background: #fff; cursor: pointer; }
+/* 録画の地は明色の --bg と同じ色。暗色でも背景はこの色のまま（読み込み前に枠の色が見えないように） */
+.demo-video { display: block; width: 100%; height: auto; background: #fbfcfb; cursor: pointer; }
 .demo-toggle {
   flex: none;
   padding: .1rem .7rem;
@@ -270,7 +279,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   border-top: 1px solid var(--line);
   background: var(--surface-2);
 }
-.demo-status { margin: 0; font-size: .87rem; line-height: 1.6; color: var(--fg-2); }
+.demo-status { margin: 0; font-size: .9rem; line-height: 1.6; color: var(--fg-2); }
 
 /* ---------- 節の共通 ---------- */
 .block { padding: 1.4rem 0 1.6rem; }
@@ -279,7 +288,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 .sec-head { margin-bottom: 1rem; padding-bottom: .4rem; border-bottom: 1px solid var(--line-2); }
 .sec-head h2 { margin: 0; font-size: 1rem; font-weight: 400; color: var(--fg-2); }
 .kicker { margin-right: .7rem; font-size: 1.4rem; font-weight: 800; color: var(--fg); }
-.sec-lead { margin: .2rem 0 0; font-size: .93rem; color: var(--fg-2); }
+.sec-lead { margin: .2rem 0 0; font-size: .95rem; color: var(--fg-2); }
 
 /* 節の中の並び。枠で囲まず、列の間隔と小見出しで区切る */
 .steps, .features, .data-grid {
@@ -298,7 +307,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 .steps p, .features p, .data-grid p, .limit p, .limit ul, .settings-list dd {
   margin: 0;
   color: var(--fg-2);
-  font-size: .95rem;
+  font-size: 1rem;
 }
 .features p b, .limit p b, .settings-list dd b { color: var(--fg); }
 
@@ -310,14 +319,14 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   place-items: center;
   width: 1.6rem; height: 1.6rem;
   border-radius: 50%;
-  background: var(--blue);
+  background: var(--green-text);
   color: var(--bg);
   font-weight: 700;
-  font-size: .93rem;
+  font-size: .95rem;
   line-height: 1;
 }
 .steps p { grid-column: 2; }
-.howto-more { margin: .9rem 0 0; font-size: .95rem; color: var(--fg-2); }
+.howto-more { margin: .9rem 0 0; font-size: 1rem; color: var(--fg-2); }
 
 /* ---------- 実際の画面 ----------
    変換前と変換後を左右に並べる。狭い幅では上下に積む（48rem 以下）。 */
@@ -337,7 +346,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   padding: .3rem .8rem;
   border-top: 1px solid var(--line);
   background: var(--surface-2);
-  font-size: .87rem;
+  font-size: .9rem;
   color: var(--fg-2);
 }
 .shot figcaption::before { content: ""; flex: none; width: .6rem; height: .6rem; border-radius: 2px; background: var(--green); }
@@ -354,7 +363,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   padding: .2rem .6rem;
   border-radius: var(--r);
   background: var(--surface-2);
-  font-size: .9rem;
+  font-size: .95rem;
 }
 .ex-in { font-family: var(--mono); color: var(--green-text); overflow-wrap: anywhere; }
 .ex-out { font-weight: 700; color: var(--fg); }
@@ -387,7 +396,7 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
   border-radius: var(--r);
   background: rgba(15, 18, 34, .78);
   color: #fff;
-  font-size: .8rem;
+  font-size: .875rem;
   font-weight: 700;
 }
 .zoom {
@@ -418,9 +427,9 @@ pre code { padding: 0; border: 0; background: none; font-size: inherit; }
 
 .table-wrap { overflow-x: auto; margin: .6rem 0; border: 1px solid var(--line); border-radius: var(--r); }
 .table-wrap table { margin: 0; border: 0; }
-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
 th, td { padding: .3rem .7rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
-thead th { background: var(--surface-2); font-size: .85rem; color: var(--fg-3); font-weight: 700; }
+thead th { background: var(--surface-2); font-size: .875rem; color: var(--fg-3); font-weight: 700; }
 tbody tr:last-child td { border-bottom: 0; }
 .num { text-align: right; font-variant-numeric: tabular-nums; }
 
@@ -437,13 +446,13 @@ tbody tr:last-child td { border-bottom: 0; }
   border-radius: var(--r);
 }
 .price-name { margin: 0; font-weight: 800; }
-.price-name span { margin-left: .5rem; font-size: .85rem; font-weight: 400; color: var(--fg-3); }
+.price-name span { margin-left: .5rem; font-size: .875rem; font-weight: 400; color: var(--fg-3); }
 .price { display: flex; align-items: baseline; gap: .25rem; margin: .5rem 0 0; }
 .price-num { font-size: 2.4rem; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .price-unit { font-size: 1.1rem; font-weight: 800; }
-.price-term { margin-left: .5rem; padding: 0 .5rem; border-radius: var(--r); background: var(--blue-soft); color: var(--blue); font-size: .85rem; font-weight: 700; }
-.price-trial { margin: .2rem 0 .7rem; color: var(--green-text); font-weight: 700; font-size: .95rem; }
-.price-meta { margin: .8rem 0 0; font-size: .87rem; }
+.price-term { margin-left: .5rem; padding: 0 .5rem; border-radius: var(--r); background: var(--blue-soft); color: var(--blue); font-size: .875rem; font-weight: 700; }
+.price-trial { margin: .2rem 0 .7rem; color: var(--green-text); font-weight: 700; font-size: 1rem; }
+.price-meta { margin: .8rem 0 0; font-size: .9rem; }
 .price-meta > div { display: flex; justify-content: space-between; gap: 1rem; padding: .25rem 0; border-top: 1px solid var(--line); }
 .price-meta dt { color: var(--fg-3); }
 .price-meta dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
@@ -456,15 +465,15 @@ tbody tr:last-child td { border-bottom: 0; }
   padding: .3rem 0;
   border-bottom: 1px solid var(--line);
 }
-.env-list dt { color: var(--fg-3); font-size: .93rem; }
+.env-list dt { color: var(--fg-3); font-size: .95rem; }
 .env-list dd { margin: 0; }
-.env-note { margin: .5rem 0 0; font-size: .9rem; color: var(--fg-3); }
+.env-note { margin: .5rem 0 0; font-size: .95rem; color: var(--fg-3); }
 .callout {
   margin-top: .8rem;
   padding: .6rem .9rem;
   border-radius: var(--r);
   background: var(--blue-soft);
-  font-size: .93rem;
+  font-size: .95rem;
 }
 .callout p { margin: 0; color: var(--fg-2); }
 .callout strong { color: var(--fg); }
@@ -472,7 +481,7 @@ tbody tr:last-child td { border-bottom: 0; }
 
 /* ---------- 情報の取り扱い ---------- */
 .data-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.data-foot { margin: .9rem 0 0; font-size: .93rem; color: var(--fg-2); }
+.data-foot { margin: .9rem 0 0; font-size: .95rem; color: var(--fg-2); }
 
 /* ---------- よくある質問 ---------- */
 .faq {
@@ -496,7 +505,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .faq summary::after { content: "+"; flex: none; color: var(--fg-3); font-weight: 400; }
 .faq details[open] summary::after { content: "−"; }
 .faq summary:hover { color: var(--blue); }
-.faq details p { margin: 0; padding: 0 1.5rem .7rem 0; color: var(--fg-2); font-size: .95rem; }
+.faq details p { margin: 0; padding: 0 1.5rem .7rem 0; color: var(--fg-2); font-size: 1rem; }
 
 /* ---------- 変更履歴 ---------- */
 /* 新しい版から縦に 1 列で並べる。左に版、右にその版の変更 */
@@ -511,21 +520,21 @@ tbody tr:last-child td { border-bottom: 0; }
 .timeline > li:last-child { border-bottom: 0; }
 .timeline h3 { margin: 0; font-size: 1rem; line-height: 1.6; font-family: var(--mono); }
 .timeline > li:first-child h3 { color: var(--blue); }
-.timeline ul { margin: 0; padding-left: 1.1rem; color: var(--fg-2); font-size: .93rem; line-height: 1.6; }
+.timeline ul { margin: 0; padding-left: 1.1rem; color: var(--fg-2); font-size: .95rem; line-height: 1.6; }
 
 /* ---------- 最後の CTA ---------- */
-.cta-band { margin-top: .6rem; padding: 1.3rem 0; background: #0014bb; color: #fff; }
+.cta-band { margin-top: .6rem; padding: 1.3rem 0; background: var(--band-bg); color: #fff; }
 .cta-band-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; }
 .cta-band h2 { margin: 0; font-size: 1.3rem; font-weight: 800; }
-.cta-band p { margin: .1rem 0 0; font-size: .93rem; opacity: .9; }
+.cta-band p { margin: .1rem 0 0; font-size: .95rem; opacity: .9; }
 
 /* ---------- 下層ページ ---------- */
 .page-hero { padding: 1.3rem 0 1.2rem; background: var(--bg-alt); border-bottom: 1px solid var(--line); }
-.crumb { margin: 0 0 .2rem; font-size: .87rem; color: var(--fg-3); }
+.crumb { margin: 0 0 .2rem; font-size: .9rem; color: var(--fg-3); }
 .crumb a { color: var(--fg-3); }
 .crumb span { margin: 0 .5rem; }
 .page-hero h1 { margin: 0; font-size: clamp(1.4rem, 1.1rem + 1vw, 1.8rem); font-weight: 800; }
-.page-desc { margin: .3rem 0 0; max-width: 52rem; font-size: .95rem; color: var(--fg-2); }
+.page-desc { margin: .3rem 0 0; max-width: 52rem; font-size: 1rem; color: var(--fg-2); }
 
 /* 左に目次、右に本文。目次は固定し、長いページ（トラブルシューティング）でも読んでいる位置が分かるようにする。
    「このページの内容」は assets/js/site.js が見出しから作る。 */
@@ -542,11 +551,11 @@ tbody tr:last-child td { border-bottom: 0; }
   max-height: calc(100vh - 5rem);
   overflow-y: auto;
   padding-right: .4rem;
-  font-size: .9rem;
+  font-size: .95rem;
   scrollbar-width: thin;
 }
 .side-menu > summary { display: none; }
-.side-h { margin: 0 0 .25rem; font-size: .8rem; font-weight: 800; color: var(--fg-3); }
+.side-h { margin: 0 0 .25rem; font-size: .875rem; font-weight: 800; color: var(--fg-3); }
 .side-nav { display: grid; margin-bottom: 1.1rem; }
 .side-nav a, .side-toc a {
   display: block;
@@ -560,7 +569,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .side-nav a[aria-current="page"] { background: var(--blue-soft); color: var(--blue); font-weight: 700; }
 .side-toc ol { margin: 0; padding: 0; list-style: none; display: grid; border-left: 2px solid var(--line); }
 .side-toc a { margin-left: -2px; border-left: 2px solid transparent; border-radius: 0 var(--r) var(--r) 0; }
-.side-toc li.is-sub a { padding-left: 1.3rem; font-size: .87rem; }
+.side-toc li.is-sub a { padding-left: 1.3rem; font-size: .9rem; }
 .side-toc a[aria-current="location"] { border-left-color: var(--blue); background: var(--blue-soft); color: var(--blue); font-weight: 700; }
 /* 左の目次に症状が並ぶので、本文中の目次は重複になる。目次が本文の上に来る幅では残す */
 @media (min-width: 60.01rem) { .has-sidetoc .prose .toc { display: none; } }
@@ -600,7 +609,7 @@ tbody tr:last-child td { border-bottom: 0; }
   border-radius: var(--r);
   background: var(--surface-2);
 }
-.toc-title { margin: 0 0 .3rem; font-size: .85rem; font-weight: 800; color: var(--fg-3); }
+.toc-title { margin: 0 0 .3rem; font-size: .875rem; font-weight: 800; color: var(--fg-3); }
 .toc ol {
   margin: 0;
   padding: 0;
@@ -610,22 +619,22 @@ tbody tr:last-child td { border-bottom: 0; }
   gap: 0 .6rem;
 }
 .toc li { margin: 0; }
-.toc a { display: block; padding: .2rem .4rem; border-radius: var(--r); font-size: .93rem; line-height: 1.5; text-decoration: none; }
+.toc a { display: block; padding: .2rem .4rem; border-radius: var(--r); font-size: .95rem; line-height: 1.5; text-decoration: none; }
 .toc a:hover { background: var(--blue-soft); }
 
 /* ---------- フッター ---------- */
-.site-footer { border-top: 1px solid var(--line); background: var(--bg-alt); padding: 1.4rem 0 0; font-size: .93rem; }
+.site-footer { border-top: 1px solid var(--line); background: var(--bg-alt); padding: 1.4rem 0 0; font-size: .95rem; }
 .footer-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr); gap: 2rem; }
 .footer-brand p { margin: .3rem 0 .6rem; color: var(--fg-2); }
-.footer-brand .btn { padding: .3rem .9rem; font-size: .9rem; }
+.footer-brand .btn { padding: .3rem .9rem; font-size: .95rem; }
 .footer-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .footer-nav div { display: grid; align-content: start; gap: .1rem; }
-.footer-h { margin: 0 0 .15rem; font-size: .85rem; font-weight: 800; color: var(--fg-3); }
+.footer-h { margin: 0 0 .15rem; font-size: .875rem; font-weight: 800; color: var(--fg-3); }
 .footer-nav a { color: var(--fg-2); text-decoration: none; }
 .footer-nav a:hover { color: var(--blue); text-decoration: underline; }
 /* 連絡先は全ページのここに文字で出す（リンクの文言だけにしない） */
 .footer-bottom { margin-top: 1.1rem; padding: .7rem 0 .9rem; border-top: 1px solid var(--line); }
-.footer-bottom p { margin: 0; display: flex; flex-wrap: wrap; gap: .1rem 1.2rem; font-size: .87rem; color: var(--fg-3); }
+.footer-bottom p { margin: 0; display: flex; flex-wrap: wrap; gap: .1rem 1.2rem; font-size: .9rem; color: var(--fg-3); }
 
 /* ---------- 幅に応じて ---------- */
 @media (max-width: 68rem) {

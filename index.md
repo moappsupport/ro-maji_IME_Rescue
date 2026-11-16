@@ -29,7 +29,7 @@ updated: 2026-11-16
           <span class="window-title">実際の動作（録画・音声なし）</span>
           <button type="button" class="demo-toggle" hidden>一時停止</button>
         </div>
-        <video class="demo-video" width="720" height="282" autoplay muted loop playsinline preload="metadata" poster="{{ '/assets/img/demo-poster.png' | relative_url }}" aria-label="IME オフのまま打ったローマ字が、変換キーを押すと日本語に入力し直される様子の録画。行全体がローマ字の例、文の途中で大文字が混ざる例、折り返して 2 行になった例の 3 つ">
+        <video class="demo-video" width="720" height="294" autoplay muted loop playsinline preload="metadata" poster="{{ '/assets/img/demo-poster.png' | relative_url }}" aria-label="IME オフのまま打ったローマ字が、変換キーを押すと日本語に入力し直される様子の録画。行全体がローマ字の例、文の途中で大文字が混ざる例、折り返して 2 行になった例の 3 つ">
           <source src="{{ '/assets/video/demo.mp4' | relative_url }}" type="video/mp4">
         </video>
         <div class="window-foot">
